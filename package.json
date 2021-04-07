@@ -1,0 +1,32 @@
+{
+  "name": "dcoderstheorem",
+  "version": "1.0.0",
+  "description": "A web portal for conducting online events.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "devStart": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DCodersClub/DCodersTheorem.git"
+  },
+  "keywords": [
+    "DCoders",
+    "Quiz",
+    "Event"
+  ],
+  "author": "Shashank,Rohan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DCodersClub/DCodersTheorem/issues"
+  },
+  "homepage": "https://github.com/DCodersClub/DCodersTheorem#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.3"
+  }
+}
