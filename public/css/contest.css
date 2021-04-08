@@ -1,0 +1,167 @@
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.35);
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+	/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
+	background-color: #33ff00;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: #252a34;
+  overflow-y: hidden;
+  font-family: "Share Tech Mono", monospace;
+  color: #ccc;
+}
+
+hr{
+    border: none;
+    text-align: center;
+    margin: 50px 0;
+
+}
+hr::after{
+    content : "#########################################################";
+    letter-spacing: 4px;
+}
+
+.nav-container {
+  width: 100%;
+  height: 8%;
+  padding: 15px;
+  text-align: center;
+  background-color: #33ff00;
+}
+
+.nav-container h3 {
+  display: inline-block;
+  color: #252a34;
+}
+
+
+table {
+  height: 100%;
+  width: 100%;
+}
+
+table td {
+  width: 50%;
+  max-width: 50%;
+}
+
+.left-container {
+    position: relative;
+  width: 50%;
+  max-width: 50%;
+  height: 92%;
+  float: left;
+  border-right: 1px dashed #aaa;
+}
+
+.ascii-art{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+    height: 90%;
+    width: 90%;
+    font-size: 0.9rem;
+ white-space: pre-wrap;
+}
+
+
+.right-container {
+    width: 50%;
+    max-width: 50%;
+  height: 92%;
+  padding: 25px 10px;
+  float: right;
+  overflow-y: auto;
+}
+
+.question-list{
+
+    list-style-type: none;
+    width: 100%;
+    text-align: center;
+}
+
+.question-list li{
+    display: inline;
+    margin: 0 15px;
+}
+
+.link-active{
+    color : #33ff00;    border-bottom: 1px dashed #33ff00;
+cursor: pointer;
+
+}
+
+
+.link-disabled{
+    color : #6b6b6b;
+    border-bottom:none;
+    cursor: not-allowed;
+}
+
+
+.question-heading{
+    margin-bottom: 25px;
+}
+
+
+.question {
+    margin-bottom: 50px;
+    white-space: pre-wrap;
+    tab-size: 0em;
+ }
+
+ .answer-field{
+     display: block;
+     width: 50%;
+     padding: 5px;
+     outline: none;
+     margin-bottom: 25px;
+     font-family: "Share Tech Mono", monospace;
+
+ }
+
+ .submit-button{
+     display: block;
+     height: 50px;
+     padding: 5px 15px;
+     margin-bottom: 25px;
+     background-color: #33ff00;
+     font-family: "Share Tech Mono", monospace;
+     color : #333;
+     font-weight: 700;
+     border: none;
+     outline: none;
+     cursor: pointer;
+ }
