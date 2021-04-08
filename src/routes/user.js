@@ -1,29 +1,24 @@
 const User = require("../models/user");
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
+const passport = require("passport");
 
 router.get("/login", async (req, res) => {
   res.render("user/login.ejs");
 });
 
-router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
+router.post("/login", async (req, res, next) => {
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/user/login",
+    failureFlash: true,
+  })(req, res, next);
+});
 
-  User.findOne({ email: email })
-    .then((user) => {
-      if (user == null) {
-        res.send("you aint gettin in homie");
-      } else {
-        if (bcrypt.compareSync(password, user.password)) {
-          res.send("logged in");
-        } else {
-          res.send("still not getting in");
-        }
-      }
-    })
-    .catch((err) => {
-      res.send("server's fucked up mate");
-    });
+router.get("/logout", (req, res) => {
+  req.logout();
+  req.flash("success_msg", "Logged Out succesfully");
+  res.redirect("/user/login");
 });
 
 router.get("/register", async (req, res) => {
@@ -33,30 +28,40 @@ router.get("/register", async (req, res) => {
 router.post("/register", async (req, res) => {
   let errors = [];
   const { name, email, mobileNumber, password, collegeName } = req.body;
-  console.log(req.body);
+  if (!name || !email || !mobileNumber || !password || !collegeName) {
+    errors.push({ msg: "Fields Cant be empty" });
+  }
+  if (password.length < 6) {
+    errors.push({ msg: "Password should be more than 6 characters" });
+  }
 
-  //Check if user already exist with this email
-  //Validations will go here.
-
-  const saltRounds = 10;
-  const hashPass = await bcrypt.hash(password, saltRounds);
-
-  let newUser = User({
-    name: name,
-    email: email,
-    mobileNumber: mobileNumber,
-    password: hashPass,
-    collegeName: collegeName,
-  });
   try {
-    newUser
-      .save()
-      .then(() => {
-        res.redirect("/user/login");
-      })
-      .catch((err) => {
-        res.send("shit");
+    let user = await User.findOne({ email: email });
+    if (user) {
+      errors.push({ msg: "Email already in use" });
+    }
+    if (errors.length > 0) {
+      res.render("user/register", {
+        errors,
+        name,
+        email,
+        mobileNumber,
+        collegeName,
       });
+    } else {
+      const saltRounds = 10;
+      const hashPass = await bcrypt.hash(password, saltRounds);
+      let newUser = User({
+        name: name,
+        email: email,
+        mobileNumber: mobileNumber,
+        password: hashPass,
+        collegeName: collegeName,
+      });
+      await newUser.save();
+      req.flash("success_msg", "Registered Successfully");
+      res.redirect("/user/login");
+    }
   } catch (e) {
     console.log(e);
   }
