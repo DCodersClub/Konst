@@ -3,11 +3,10 @@ body{
 }
 
 .form-container{
-    height: 100%;
     width: 66%;
     margin: 0 auto;
     text-align: center;
-    padding: 100px 0;
+    padding: 50px 0;
 
 }
 
@@ -58,10 +57,15 @@ input{
     font-weight: 900;
 }
 
+.register-link{
+    border-bottom: 1px dashed #aaa;
+}
+
 button{
+    display: block;
     height: 50px;
     padding: 5px 15px;
-    margin-top: 25px;
+    margin: 25px auto 0px;
     background-color: #33ff00;
     font-family: "Share Tech Mono", monospace;
     color: #333;
@@ -69,5 +73,4 @@ button{
     border: none;
     outline: none;
     cursor: pointer;
-    margin-bottom: 50px;
 }
