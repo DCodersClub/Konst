@@ -12,11 +12,13 @@
   </head>
   <body>
     <%-include("../partials/background.ejs")%>
-    <%- include("../partials/navbar.ejs") %> <%-
-    include("../partials/messages.ejs") %>
+    <%- include("../partials/navbar.ejs") %> 
     
       <div class='form-container'>
         <h1 class='main-heading'>Authenticate</h1>
+        <div class='input-container'>
+          <%-include("../partials/messages.ejs") %>
+
         <form method="POST" action="/user/login">
           <input
             type="email"
@@ -32,6 +34,9 @@
             placeholder="Password"
             required
           />
+
+          <a class='register-link' href="/user/register">dont have an account ?</a>
+        </div>
           <button type="submit">Log-In</button></form>
       </div>
 

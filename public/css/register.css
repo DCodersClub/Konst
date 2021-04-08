@@ -1,9 +1,13 @@
+body{
+    overflow-y: auto;
+}
+
 .form-container{
     height: 100%;
     width: 66%;
     margin: 0 auto;
     text-align: center;
-    padding-top: 100px;
+    padding: 100px 0;
 
 }
 
@@ -12,6 +16,23 @@
     text-transform: uppercase;
     margin-bottom: 50px;
 }
+
+
+.input-container{
+    width: 50%;
+    margin: 0 auto;
+}
+input{
+    display: block;
+    width: 100%;
+    margin-bottom: 50px;
+    padding: 5px;
+  outline: none;
+  -moz-appearance: textfield;
+
+  font-family: "Share Tech Mono", monospace;
+}
+
 .messages{
     margin-bottom: 25px;
 }
@@ -37,23 +58,6 @@
     font-weight: 900;
 }
 
-.input-container{
-    width: 50%;
-    margin: 0 auto;
-}
-input{
-    display: block;
-    width: 100%;
-    margin-bottom: 50px;
-    padding: 5px;
-  outline: none;
-  font-family: "Share Tech Mono", monospace;
-}
-
-.register-link{
-    border-bottom: 1px dashed #aaa;
-}
-
 button{
     height: 50px;
     padding: 5px 15px;
@@ -65,4 +69,5 @@ button{
     border: none;
     outline: none;
     cursor: pointer;
+    margin-bottom: 50px;
 }
