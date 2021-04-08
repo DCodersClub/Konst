@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 
 router.get("/login", async (req, res) => {
-  res.render("user/login.ejs");
+  res.render("user/login.ejs", { page: 4 });
 });
 
 router.post("/login", async (req, res, next) => {
