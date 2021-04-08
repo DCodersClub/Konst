@@ -1,30 +1,15 @@
 <div class="nav-container">
   <h3>&lt Konst /></h3>
   <ul class="nav-list">
-    <% if(page==0){%>
-    <li class="is-active"><a href="/">Home</a></li>
-    <%}%> <%if(page!=0){%>
+
     <li><a href="/">Home</a></li>
-    <%}%> <% if(page==1){%>
-    <li class="is-active">Rules</li>
-    <%}%> <%if(page!=1){%>
     <li>Rules</li>
-    <%}%> <% if(page==2){%>
-    <li class="is-active">Archive</li>
-    <%}%> <%if(page!=2){%>
     <li>Archive</li>
-    <%}%> <% if(page==3){%>
-    <li class="is-active">About</li>
-    <%}%> <%if(page!=3){%>
     <li>About</li>
-    <%}%> <% if(page==4){%> <%if (typeof user =='undefined'){ %>
-    <li class="is-active"><a href="/user/login">Login</a></li>
+    <%if (typeof user =='undefined'){ %>
+    <li><a href="/user/login">Authenticate</a></li>
     <% } else{ %>
     <li><a href="/user/logout">Logout</a></li>
-    <% }}%> <%if(page!=4){%><%if (typeof user =='undefined'){ %>
-    <li><a href="/user/login">Login</a></li>
-    <% } else{ %>
-    <li><a href="/user/logout">Logout</a></li>
-    <% } %> <%}%>
+    <% } %>
   </ul>
 </div>
