@@ -142,6 +142,9 @@ svg {
   cursor: pointer;
 }
 
+.nav-container a{
+  text-decoration: none;
+}
 .main-content {
   position: absolute;
   top: 55%;

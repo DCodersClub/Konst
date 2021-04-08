@@ -4,21 +4,30 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 
 router.get("/login", async (req, res) => {
-	res.render("user/login.ejs");
+	if (req.isAuthenticated()) {
+		res.redirect("/");
+	} else {
+		res.render("user/login.ejs");
+	}
 });
 
 router.post("/login", async (req, res, next) => {
-	passport.authenticate("local", {
-		successRedirect: "/",
-		failureRedirect: "/user/login",
-		failureFlash: true,
-	})(req, res, next);
+	//Already logged in
+	if (req.isAuthenticated()) {
+		res.redirect("/");
+	} else {
+		passport.authenticate("local", {
+			successRedirect: "/",
+			failureRedirect: "/user/login",
+			failureFlash: true,
+		})(req, res, next);
+	}
 });
 
-router.get("/logout",(req,res)=>{
-    req.logout();
-    req.flash("success_msg","Logged Out succesfully");
-    res.redirect("/user/login");
+router.get("/logout", (req, res) => {
+	req.logout();
+	req.flash("success_msg", "Logged Out succesfully");
+	res.redirect("/user/login");
 });
 
 router.get("/register", async (req, res) => {
