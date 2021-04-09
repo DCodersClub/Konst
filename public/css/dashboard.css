@@ -1,0 +1,50 @@
+body {
+  padding: 25px;
+  overflow-y: auto;
+}
+
+h1 {
+  margin: 50px 0;
+}
+table,
+tr,
+td,
+th {
+  border: 1px solid #aaa;
+  border-collapse: collapse;
+}
+
+table {
+  margin-top: 50px;
+  width: 100%;
+  text-align: center;
+}
+
+td,
+th {
+  padding: 10px;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+td {
+  text-align: left;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
+  outline: none;
+  font-family: "Share Tech Mono", monospace;
+  resize: vertical;
+}
+
+input {
+  margin: 10px 0;
+}
+
+button {
+  margin: 10px 0;
+}

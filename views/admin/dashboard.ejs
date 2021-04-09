@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>Admin - Dashbaord</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- <a href="/admin/users/all">
+      <button>All Users</button>
+    </a> -->
+    <h1>User Management</h1>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>College</th>
+      </tr>
+      <% users.forEach((user)=>{%>
+      <tr>
+        <td><%=user.name%></td>
+        <td><%=user.email%></td>
+        <td><%=user.mobileNumber%></td>
+        <td><%=user.collegeName%></td>
+      </tr>
+      <%});%>
+    </table>
+    <h1>Questions</h1>
+    <form action="/admin/question/add" method="POST">
+      <input type="number" name="index" placeholder="index" />
+      <textarea
+        type="text"
+        name="question"
+        placeholder="question"
+        required
+      ></textarea>
+      <input type="text" name="answer" placeholder="answer" required />
+      <button type="submit">Add Question</button>
+    </form>
+    <table>
+      <tr>
+        <th>Index</th>
+        <th>Question</th>
+        <th>Answer</th>
+      </tr>
+      <% questions.forEach((question)=>{%>
+      <tr>
+        <td><%=question.index%></td>
+        <td><%=question.question%></td>
+        <td><%=question.answer%></td>
+      </tr>
+      <%});%>
+    </table>
+  </body>
+</html>

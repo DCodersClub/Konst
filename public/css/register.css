@@ -1,77 +1,74 @@
-body{
-    overflow-y: auto;
+body {
+  overflow-y: auto;
 }
 
-.form-container{
-    width: 40%;
-    margin: 30px auto;
-    text-align: center;
-    padding: 50px 0;
-    background: rgba(0,0,0,0.8);
-    border-radius: 15px;
+.form-container {
+  width: 66%;
+  margin: 30px auto;
+  text-align: center;
+  padding: 50px 0;
+  border-radius: 15px;
 }
 
-
-.form-container .main-heading{
-    text-transform: uppercase;
-    margin-bottom: 50px;
+.form-container .main-heading {
+  text-transform: uppercase;
+  margin-bottom: 50px;
 }
 
-
-.input-container{
-    width: 50%;
-    margin: 0 auto;
+.input-container {
+  width: 50%;
+  margin: 0 auto;
 }
-input{
-    display: block;
-    width: 100%;
-    margin-bottom: 25px;
-    padding: 5px;
+input {
+  display: block;
+  width: 100%;
+  margin-bottom: 25px;
+  padding: 5px;
   outline: none;
   -moz-appearance: textfield;
 
   font-family: "Share Tech Mono", monospace;
 }
 
-.messages{
-    margin-bottom: 25px;
+.messages {
+  margin-bottom: 25px;
 }
 
-.messages h6{
-    padding: 5px 0;
-    margin: 10px 0;
+.messages h6 {
+  padding: 5px 0;
+  margin: 10px 0;
 }
 
-.error-message{
-    background-color: crimson;
-    color : #eee;
-
+.error-message {
+  background-color: crimson;
+  color: #eee;
 }
 
-.success-message{
-    background-color:springgreen;
-    color : #333;
+.success-message {
+  background-color: springgreen;
+  color: #333;
 }
 
-/* .messages h6::before,.messages h6::after{
-    content: " ----------------------- ";
-    font-weight: 900;
-} */
-
-.register-link{
-    border-bottom: 1px dashed #aaa;
+.messages h6::before,
+.messages h6::after {
+  content: " ----------------------- ";
+  font-weight: 900;
 }
 
-button{
-    display: block;
-    height: 50px;
-    padding: 5px 15px;
-    margin: 25px auto 0px;
-    background-color: #33ff00;
-    font-family: "Share Tech Mono", monospace;
-    color: #333;
-    font-weight: 700;
-    border: none;
-    outline: none;
-    cursor: pointer;
+.register-link {
+  border-bottom: 1px dashed #aaa;
+}
+
+button {
+  display: block;
+  height: 50px;
+  padding: 5px 15px;
+  margin: 25px auto 0px;
+  background-color: #33ff00;
+  font-family: "Share Tech Mono", monospace;
+  color: #333;
+  font-weight: 700;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
