@@ -10,9 +10,5 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/contest", ensureAuthenticated, async (req, res) => {
-  res.render("contest.ejs", {
-    name: req.user.name,
-  });
-});
+
 module.exports = router;

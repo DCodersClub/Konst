@@ -24,6 +24,10 @@ let userSchema = new mongoose.Schema({
   collegeName: {
     type: String,
   },
+
+  questions: {
+    type: Array,
+  },
 });
 const model = mongoose.model("User", userSchema);
 module.exports = model;
