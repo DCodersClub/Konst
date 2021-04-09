@@ -7,9 +7,10 @@
     <li>Archive</li>
     <li>About</li>
     <%if (typeof user =='undefined'){ %>
-    <li><a href="/user/login">Authenticate</a></li>
+    <li><a href="/user/login">Login</a></li>
     <% } else{ %>
     <li><a href="/user/logout">Logout</a></li>
+    <li><a href="/user/profile">[<%=user.name%>]</a></li>
     <% } %>
   </ul>
 </div>

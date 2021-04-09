@@ -6,6 +6,10 @@
 <% } %>
 
 
+<% if ( typeof confirm !='undefined'){ %>
+    <h6 class='success-message'><%=confirm.msg %></h6>
+<% } %>
+
 <% if(success_msg!='') { %>
     <h6 class='success-message'><%=success_msg %></h6>
 <% } %>

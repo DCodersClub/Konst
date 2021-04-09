@@ -3,11 +3,12 @@ body{
 }
 
 .form-container{
-    width: 66%;
-    margin: 0 auto;
+    width: 40%;
+    margin: 30px auto;
     text-align: center;
     padding: 50px 0;
-
+    background: rgba(0,0,0,0.8);
+    border-radius: 15px;
 }
 
 
@@ -24,7 +25,7 @@ body{
 input{
     display: block;
     width: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     padding: 5px;
   outline: none;
   -moz-appearance: textfield;
@@ -52,10 +53,10 @@ input{
     color : #333;
 }
 
-.messages h6::before,.messages h6::after{
+/* .messages h6::before,.messages h6::after{
     content: " ----------------------- ";
     font-weight: 900;
-}
+} */
 
 .register-link{
     border-bottom: 1px dashed #aaa;
