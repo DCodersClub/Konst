@@ -15,7 +15,7 @@ router.get("/", function (req, res) {
 
 router.get("/dashboard", function (req, res) {
   if (req.cookies.authed != "true") {
-    res.redirect("/admin/login");
+    res.redirect("admin/login");
   } else {
     var query1 = User.find({});
     var query2 = Question.find({});

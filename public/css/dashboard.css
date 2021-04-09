@@ -1,5 +1,5 @@
 body {
-  padding: 25px;
+  padding: 0px 25px;
   overflow-y: auto;
 }
 
@@ -15,7 +15,7 @@ th {
 }
 
 table {
-  margin-top: 50px;
+  margin: 50px 0;
   width: 100%;
   text-align: center;
 }
