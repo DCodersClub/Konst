@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Konst - Register</title>
+		<link rel="stylesheet" href="/css/global.css" />
+		<link rel="stylesheet" href="/css/register.css">		
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+
+		<%- include("../partials/navbar.ejs") %>
+		<div class='form-container'>
+			<h1 class='main-heading'>PROFILE</h1>
+			<div class='input-container'>
+		    <%-include("../partials/messages.ejs") %>
+
+            <form method="POST" action="/user/profile/">
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Name"
+                    required
+                    value="<%= user.name %>"
+                />
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                    value="<%=user.email%>"
+                />
+                <input
+                    type="number"
+                    id="mobileNumber"
+                    name="mobileNumber"
+                    placeholder="Whatsapp Number"
+                    required
+                    value="<%=user.mobileNumber %>"
+                />
+                <input
+                    type="password"
+                    id="oldPassword"
+                    name="oldPassword"
+                    placeholder="Old Password"
+                    required
+                />
+                <input
+                    type="password"
+                    id="newPassword"
+                    name="newPassword"
+                    placeholder="New Password"
+                    required
+                />
+
+                <input
+                    type="password"
+                    id="newPassword2"
+                    name="newPassword2"
+                    placeholder="Again Enter New Password"
+                    required
+                />
+                
+                <input
+                    type="text"
+                    id="collegeName"
+                    name="collegeName"
+                    placeholder="College Name"
+                    required
+                    value="<%= user.collegeName%>"
+                />
+
+                <button type="submit">Update</button>
+            
+            </form>
+        </div>
+	</body>
+</html>
