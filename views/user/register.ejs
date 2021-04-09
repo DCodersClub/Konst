@@ -2,16 +2,22 @@
 <html lang="en">
 	<head>
 		<title>Konst - Register</title>
-		<link rel="stylesheet" href="/css/index.css" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link rel="stylesheet" href="/css/global.css" />
+		<link rel="stylesheet" href="/css/register.css">		<link rel="preconnect" href="https://fonts.gstatic.com" />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
 			rel="stylesheet"
 		/>
 	</head>
 	<body>
-		<%- include("../partials/navbar.ejs") %> <%-
-		include("../partials/messages.ejs") %>
+		<%-include("../partials/background.ejs")%>
+
+		<%- include("../partials/navbar.ejs") %>
+		<div class='form-container'>
+			<h1 class='main-heading'>REGISTER</h1>
+			<div class='input-container'>
+		<%-include("../partials/messages.ejs") %>
+
 		<form method="POST" action="/user/register">
 			<input
 				type="text"
@@ -58,7 +64,12 @@
                 required
                 value="<%= typeof collegeName != 'undefined' ? collegeName: '' %>"
             />
-			<input type="submit" id="submit" />
-		</form>
+
+			<a class='register-link' href="/user/login">already have an account ?</a>
+
+			<button type="submit">Register</button>
+		</div>
+			</form>
+
 	</body>
 </html>
