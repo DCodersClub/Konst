@@ -40,4 +40,29 @@ router.get("/questions", ensureAuthenticated, async (req, res) => {
   });
 });
 
+router.post("/success",function(req,res){
+  const {questionIndex} = req.body;
+  User.findOne({email:req.user.email}).then((user)=>{
+    var found = false;
+    let i;
+    for ( i = 0 ; i < 10 ; i++){
+      if(user.questions[i].index == questionIndex){
+        found = true;
+        break;
+      }
+    }
+
+    if(found){
+      user.questions[i].solved = true;
+      user.save().then(()=>{res.sendStatus(200)}).catch((err)=>{res.sendStatus(500)});
+    }
+    else{
+      res.sendStatus(404);
+    }
+  }).catch((err)=>{
+    console.log(err);
+    res.sendStatus(500);
+  });
+});
+
 module.exports = router;
