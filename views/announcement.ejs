@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title>Konst - Home</title>
+		<link rel="stylesheet" href="/css/global.css" />
+		<link rel="stylesheet" href="/css/index.css" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<%-include("partials/navbar.ejs")%>
+        <% annoucements.forEach((annouce)=>{%>
+            <div id="annoucement">
+                <h1><%= new Date(annouce.createdOn).toLocaleDateString()%></h1>  
+                <h3><%= annouce.subject%></h3>
+                <h5><%= annouce.content%></h2>
+            </div>
+        <%});%>
+		<script src="/js/nav.js"></script>
+	</body>
+</html>

@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Annoucement=require("../models/annoucements");
 const Question = require("../models/question");
 const router = require("express").Router();
 const mailer = require("../services/mailer");
@@ -75,11 +76,20 @@ router.get("/all", async (req, res) => {
 
 router.post("/announce",async (req,res)=>{
   try{
+    const {subject,message}=req.body;
+
+    const newAnnouce=Annoucement({
+      subject:subject,
+      content:message,
+    })
+    await newAnnouce.save();
     let users=await User.find({});
+    mailList=[]
     for(user of users){
-      mailer.sendMail(user.email, req.body.message);
+      mailList.push(user.email);
     }
-    res.redirect("admin/dashboard.ejs")
+    // mailer.sendMail(mailList, subject,message);
+    res.redirect("/admin")
   }catch(err){
     console.log(err);
   }

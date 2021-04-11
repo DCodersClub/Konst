@@ -139,7 +139,7 @@ router.post("/forgot", async (req, res) => {
 		if (user) {
 			let randomPassword = crypto.randomBytes(8).toString("hex");
 			let email_text = `Your password has been reset to ${randomPassword}, For Security reasons we recommend changing the password as soon as you login `;
-			mailer.sendMail(req.body.email, email_text);
+			mailer.sendMail(req.body.email, "Password Reset",email_text);
 			const saltRounds = 10;
 			const newHashedPass = bcrypt.hashSync(randomPassword, saltRounds);
 			user.password = newHashedPass;
