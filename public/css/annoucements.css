@@ -1,0 +1,32 @@
+body{
+    overflow-y: scroll;
+}
+
+.container{
+    width: 60%;
+    margin:30px auto 30px auto;
+    align-self: center;
+    padding: 5%;
+}
+
+
+.annoucement{
+    margin:10px;
+    background: rgba(0,0,0,0.5);
+    padding:30px;
+    border-radius: 10px;
+}
+
+.heading{
+    font-family: "Share Tech Mono", monospace;
+    font-size: 1.5rem;
+    color: #33ff00;
+    margin-bottom:20px;
+}
+
+.content{
+    font-family: "Share Tech Mono", monospace;
+    font-size:1rem;
+    color: #ccc;
+
+}

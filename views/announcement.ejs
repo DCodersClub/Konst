@@ -3,6 +3,8 @@
 		<title>Konst - Home</title>
 		<link rel="stylesheet" href="/css/global.css" />
 		<link rel="stylesheet" href="/css/index.css" />
+		<link rel="stylesheet" href="/css/annoucements.css" />
+		
 		<link rel="preconnect" href="https://fonts.gstatic.com" />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
@@ -12,13 +14,14 @@
 	</head>
 	<body>
 		<%-include("partials/navbar.ejs")%>
-        <% annoucements.forEach((annouce)=>{%>
-            <div id="annoucement">
-                <h1><%= new Date(annouce.createdOn).toLocaleDateString()%></h1>  
-                <h3><%= annouce.subject%></h3>
-                <h5><%= annouce.content%></h2>
-            </div>
-        <%});%>
+		<div class="container">
+			<% annoucements.forEach((annouce)=>{%>
+				<div class="annoucement">
+					<div class="heading"><%= new Date(annouce.createdOn).toLocaleDateString()+ ":" + annouce.subject %> </div> 
+					<div class="content"><%= annouce.content%></div>
+				</div>
+			<%});%>
+		</div>
 		<script src="/js/nav.js"></script>
 	</body>
 </html>
