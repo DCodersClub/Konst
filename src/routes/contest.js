@@ -14,7 +14,7 @@ router.get("/", ensureAuthenticated, async (req, res) => {
 
 router.get("/questions", ensureAuthenticated, async (req, res) => {
   User.findOne({ email: req.user.email }).then((user) => {
-    if (typeof user.questions == null || typeof user.questions == undefined) {
+    if (typeof user.questions == null || typeof user.questions == undefined || user.questions.length==0) {
       //pass
       console.log("new questions generated");
       Question.find({})
