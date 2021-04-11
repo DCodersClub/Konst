@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const Question = require("../models/question");
 const router = require("express").Router();
+const mailer = require("../services/mailer");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const { mongo } = require("mongoose");
@@ -70,5 +71,18 @@ router.get("/all", async (req, res) => {
   users = await User.find({});
   res.json(users);
 });
+
+
+router.post("/announce",async (req,res)=>{
+  try{
+    let users=await User.find({});
+    for(user of users){
+      mailer.sendMail(user.email, req.body.message);
+    }
+    res.redirect("admin/dashboard.ejs")
+  }catch(err){
+    console.log(err);
+  }
+})
 
 module.exports = router;

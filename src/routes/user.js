@@ -140,14 +140,14 @@ router.post("/forgot", async (req, res) => {
 			let randomPassword = crypto.randomBytes(8).toString("hex");
 			let email_text = `Your password has been reset to ${randomPassword}, For Security reasons we recommend changing the password as soon as you login `;
 			mailer.sendMail(req.body.email, email_text);
-      const saltRounds=10;
-      const newHashedPass = bcrypt.hashSync(randomPassword, saltRounds);
+			const saltRounds = 10;
+			const newHashedPass = bcrypt.hashSync(randomPassword, saltRounds);
 			user.password = newHashedPass;
 			await user.save();
 		}
-    res.render("user/forgot_password.ejs", {
-      confirm: { msg: "Check Your Mail For New Password" },
-    });
+		res.render("user/forgot_password.ejs", {
+			confirm: { msg: "Check Your Mail For New Password" },
+		});
 	} catch (err) {
 		console.log(err);
 	}
