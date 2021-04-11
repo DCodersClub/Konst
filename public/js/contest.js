@@ -1,5 +1,5 @@
 var questions = [];
-var currentPage;
+var currentIndex = 1;
 var solved = [];
 var unlockedPages = [1];
 
@@ -23,22 +23,24 @@ $.get("/contest/questions",function handleData(data){
 
 
 function loadPage(pageNumber){
+    if(!unlockedPages.includes(pageNumber)){
     unlockedPages.push(pageNumber);
+    }
     pageNumber-=1;
-    currentPage = pageNumber;
+    currentIndex = pageNumber;
     $(".question-number").html(questions[pageNumber].index);
     $(".question").html(questions[pageNumber].question);
     console.log(questions[pageNumber].question);
 }
 
 function submitAnswer(){
-    if(solved.includes(currentPage)){
+    if(solved.includes(currentIndex)){
         return;
     }
 
-    if($(".answer-field").val() == questions[currentPage].answer){
-        solved.push(currentPage);
-        unlockNextPages(currentPage);
+    if($(".answer-field").val() == questions[currentIndex].answer){
+        solved.push(currentIndex);
+        unlockNextPages(currentIndex+1);
     }
 }
 
@@ -46,13 +48,15 @@ function unlockNextPages(current){
     var toUnlock = 2;
 
     for(var i=current;i<=10;i++){
+        console.log(i);
         if(toUnlock==0){
             break;
         }
-        if (unlockedPages.includes(i)){
+        else if (unlockedPages.includes(i)){
             continue;
         }
-        else{
+        else
+        {
             unlockedPages.push(i);
             toUnlock-=1;
         }

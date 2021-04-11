@@ -67,6 +67,7 @@ A {
   list-style-type: none;
   color: #252a34;
   display: inline;
+  font-size: 0.9rem;
 }
 
 .nav-list li {
