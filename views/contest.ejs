@@ -12,7 +12,7 @@
   </head>
   <body>
     <div class="nav-container">
-      <h3>Time Elapsed - <span class="timer">00:00</span></h3>
+      <h3>Time Elapsed - <span class="timer">00:00:00</span></h3>
     </div>
     <div class="left-container">
 
@@ -51,7 +51,6 @@
     </div>
     <div class="right-container">
         <ul class='question-list'>
-            <li class='link-disabled' title="previous"><</li>
             <li class='1 link-active'>1</li>
             <li class='2 link-disabled' >2</li>
             <li class='3 link-disabled'>3</li>
@@ -62,18 +61,21 @@
             <li class='8 link-disabled'>8</li>
             <li class='9 link-disabled'>9</li>
             <li class='10 link-disabled'>10</li>
-            <li class='link-disabled' title="next">></li>
 
         </ul>
         <hr>
+        <div class="messages">
+        </div>
         <h3 class='question-heading'>Problem <span class="question-number">0</span></h3>
         <p class='question'></p>
 <h3 class='question-heading'>Answer</h3>
 
 <input class='answer-field' type='text'>
 <button class='submit-button' onclick="submitAnswer()">Submit Answer</button>
+
 <hr>
 </div>
 <script src="/js/contest.js"></script>
+<script src="/js/time.js"></script>
   </body>
 </html>

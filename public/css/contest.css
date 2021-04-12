@@ -1,5 +1,5 @@
-.nav-container{
-  text-align: right;
+.nav-container {
+  text-align: center;
 }
 
 .nav-container h3 {
@@ -96,4 +96,39 @@
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+.disabled {
+  background-color: #6b6b6b;
+  color: #ccc;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.messages {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.messages h6 {
+  padding: 5px 0;
+  margin: 10px 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.error-message {
+  background-color: crimson;
+  color: #eee;
+}
+
+.success-message {
+  background-color: springgreen;
+  color: #333;
+}
+
+.messages h6::before,
+.messages h6::after {
+  content: " ------- ";
+  font-weight: 900;
 }

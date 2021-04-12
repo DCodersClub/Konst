@@ -14,9 +14,11 @@ router.get("/", ensureAuthenticated, async (req, res) => {
 
 router.get("/questions", ensureAuthenticated, async (req, res) => {
   User.findOne({ email: req.user.email }).then((user) => {
-    if (typeof user.questions == null || typeof user.questions == undefined || user.questions.length==0) {
-      //pass
-      console.log("new questions generated");
+    if (
+      typeof user.questions == null ||
+      typeof user.questions == undefined ||
+      user.questions.length == 0
+    ) {
       Question.find({})
         .limit(10)
         .then((questions) => {
@@ -25,7 +27,7 @@ router.get("/questions", ensureAuthenticated, async (req, res) => {
             user
               .save()
               .then(() => {
-                res.send(questions);
+                res.send({questions:questions,solved:user.solved});
               })
               .catch((err) => res.sendStatus(500));
           });
@@ -34,35 +36,33 @@ router.get("/questions", ensureAuthenticated, async (req, res) => {
           res.sendStatus(500);
         });
     } else {
-      res.send(user.questions);
-      console.log("sent presaved questions");
+      res.send({questions:user.questions,solved:user.solved});
     }
   });
 });
 
-router.post("/success",function(req,res){
-  const {questionIndex} = req.body;
-  User.findOne({email:req.user.email}).then((user)=>{
-    var found = false;
-    let i;
-    for ( i = 0 ; i < 10 ; i++){
-      if(user.questions[i].index == questionIndex){
-        found = true;
-        break;
+router.post("/success", function (req, res) {
+  let { questionIndex } = req.body;
+  questionIndex-=1;
+  User.findOne({ email: req.user.email })
+    .then((user) => {
+      if (!user.solved.includes(parseInt(questionIndex))) {
+        user.solved.push(parseInt(questionIndex));
       }
-    }
-
-    if(found){
-      user.questions[i].solved = true;
-      user.save().then(()=>{res.sendStatus(200)}).catch((err)=>{res.sendStatus(500)});
-    }
-    else{
-      res.sendStatus(404);
-    }
-  }).catch((err)=>{
-    console.log(err);
-    res.sendStatus(500);
-  });
+      user
+        .save()
+        .then(() => {
+          res.sendStatus(200);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.sendStatus(500);
+        });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
 });
 
 module.exports = router;

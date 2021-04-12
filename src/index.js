@@ -19,9 +19,11 @@ async function startServer() {
   // Will see if we can do this in another file
   const indexRoutes=  require("./routes/index");
   const userRoutes= require("./routes/user");
+  const leaderboardRoutes = require("./routes/leaderboard");
   const adminRoutes = require("./routes/admin");
   const contestRoutes = require("./routes/contest");
   app.use("/admin",adminRoutes);
+  app.use("/leaderboard",leaderboardRoutes);
   app.use("/contest",contestRoutes);
   app.use("/user",userRoutes);
   app.use("/",indexRoutes);

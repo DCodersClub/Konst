@@ -28,6 +28,18 @@ let userSchema = new mongoose.Schema({
   questions: {
     type: Array,
   },
+
+  solved:{
+    type:Array
+  },
+
+  score : {
+    type : Number
+  },
+
+  time : {
+    type : Date
+  }
 });
 const model = mongoose.model("User", userSchema);
 module.exports = model;
