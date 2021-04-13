@@ -29,17 +29,19 @@ let userSchema = new mongoose.Schema({
     type: Array,
   },
 
-  solved:{
-    type:Array
+  solved: {
+    type: Array,
   },
 
-  score : {
-    type : Number
+  score: {
+    type: Number,
+    default: 0,
   },
 
-  time : {
-    type : Number
-  }
+  time: {
+    type: Number,
+    default: 0,
+  },
 });
 const model = mongoose.model("User", userSchema);
 module.exports = model;

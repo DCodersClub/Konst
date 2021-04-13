@@ -1,29 +1,52 @@
 <html>
-	<head>
-		<title>Konst - Home</title>
-		<link rel="stylesheet" href="/css/global.css" />
-		<link rel="stylesheet" href="/css/leaderboard.css" />
-		
-		<link rel="preconnect" href="https://fonts.gstatic.com" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
-			rel="stylesheet"
-		/>
-		<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-	</head>
-	<body>
-		<%-include("partials/navbar.ejs")%>
-        <div class='board-container'>
-            <h1>LEADERBOARD</h1>
-            <div class='element'>
-                <h2>Rohan Sharma</h2>
-                <h3>SRMCEM</h3>
-            </div>
-            <div class='element'>
-                <h2>Shashank Sahu</h2>
-                <h3>SRMGPC</h3>
-            </div>
-        </div>
-		<script src="/js/nav.js"></script>
-	</body>
+  <head>
+    <title>Konst - Home</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/leaderboard.css" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+      integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <%-include("partials/background.ejs")%> <%-include("partials/navbar.ejs")%>
+    <div class="board-container">
+      <h1>LEADERBOARD</h1>
+      <table>
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Score</th>
+          <th>Time</th>
+        </tr>
+		<% for(var i=0;i<board.length;i++){ %>
+        <tr>
+          <td><%=i+1%></td>
+          <td><%=board[i].name%></td>
+          <td><%=board[i].score%></td>
+		  <% if(board[i].time==0) {%>
+			  <td>-</td>
+		  <%}%>
+		  <%if(board[i].time>0){%>
+		  
+          <td><%=millisToMinutesAndSeconds(board[i].time)%></td>
+		  <%}%>
+        </tr>
+		<%}%>
+      </table>
+    </div>
+    <script src="/js/nav.js"></script>
+  </body>
 </html>
+
+
+<%function millisToMinutesAndSeconds(millis){var hours = Math.floor(millis/3600000);var mins = Math.floor(Math.floor(millis%3600000)/60000);var seconds = (Math.floor(Math.floor(millis%3600000)%60000)/1000).toFixed(0);return pad(hours,2)+":"+pad(mins,2)+":"+pad(seconds,2);}%>
+
+<%function pad(n, width, z) {z = z || '0';n = n + '';return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;}%>

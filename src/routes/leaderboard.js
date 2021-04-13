@@ -1,9 +1,36 @@
 const router = require("express").Router();
 const { ensureAuthenticated } = require("../config/auth");
+const User = require("../models/user");
 
-router.get("/",function(req,res){
-    res.render("leaderboard.ejs");
+let board = [];
+updateLeaderboard();
+
+router.get("/", function (req, res) {
+  res.render("leaderboard.ejs", { board });
 });
 
+setInterval(updateLeaderboard, 10000);
+
+function updateLeaderboard() {
+  User.find({})
+    .then((users) => {
+      board = [];
+
+      users.forEach((user) => {
+        board.push({
+          name: user.name,
+          score: user.score,
+          time: user.time,
+        });
+      });
+
+      board.sort(function (b, a) {
+        return a.score - b.score || b.time - a.time;
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
 module.exports = router;
