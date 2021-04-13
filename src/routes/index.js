@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
 });
 
 
-router.get("/annoucements", async (req,res)=>{
+router.get("/announcement", async (req,res)=>{
   try{
     const annoucements=await Annoucement.find({}).sort({createdOn: -1});
     res.render("announcement.ejs",{annoucements});

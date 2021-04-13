@@ -38,7 +38,7 @@ let userSchema = new mongoose.Schema({
   },
 
   time : {
-    type : Date
+    type : Number
   }
 });
 const model = mongoose.model("User", userSchema);

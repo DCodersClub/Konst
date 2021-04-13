@@ -3,10 +3,10 @@ body{
 }
 
 .container{
-    width: 60%;
+    width: 66%;
     margin:30px auto 30px auto;
     align-self: center;
-    padding: 5%;
+    padding:10px 0;
 }
 
 
@@ -21,10 +21,16 @@ body{
     font-family: "Share Tech Mono", monospace;
     font-size: 1.5rem;
     color: #33ff00;
-    margin-bottom:20px;
+}
+
+.annoucement h6{
+    margin-top: 5px;
+    font-size:1rem;
+    color : #33ff00;
 }
 
 .content{
+    margin-top: 25px;
     font-family: "Share Tech Mono", monospace;
     font-size:1rem;
     color: #ccc;

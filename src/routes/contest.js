@@ -6,6 +6,9 @@ const passport = require("passport");
 const { mongo } = require("mongoose");
 const { ensureAuthenticated } = require("../config/auth");
 
+
+const start = new Date("April 13, 2021 09:00:00");
+
 router.get("/", ensureAuthenticated, async (req, res) => {
   res.render("contest.ejs", {
     name: req.user.name,
@@ -42,13 +45,27 @@ router.get("/questions", ensureAuthenticated, async (req, res) => {
 });
 
 router.post("/success", function (req, res) {
+  if(!req.user){
+res.sendStatus(403);
+  }
+  else{
   let { questionIndex } = req.body;
   questionIndex-=1;
+  const penalty = new Date()-start;
+
   User.findOne({ email: req.user.email })
     .then((user) => {
       if (!user.solved.includes(parseInt(questionIndex))) {
         user.solved.push(parseInt(questionIndex));
+        if(user.score == null || typeof user.score == 'undefined'){
+          user.score = 100;
+        }
+        else{
+        user.score += 100;
+        }
+        user.time = penalty;
       }
+
       user
         .save()
         .then(() => {
@@ -63,6 +80,7 @@ router.post("/success", function (req, res) {
       console.log(err);
       res.sendStatus(500);
     });
+  }
 });
 
 module.exports = router;

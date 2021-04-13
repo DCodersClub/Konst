@@ -84,7 +84,7 @@
   font-family: "Share Tech Mono", monospace;
 }
 
-.submit-button {
+.submit-button,.finish-button {
   display: block;
   height: 50px;
   padding: 5px 15px;
@@ -96,6 +96,10 @@
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+.finish-button{
+  width: 100%;
 }
 
 .disabled {
