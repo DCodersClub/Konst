@@ -36,11 +36,13 @@ let userSchema = new mongoose.Schema({
   score: {
     type: Number,
     default: 0,
+    index:true,
   },
 
   time: {
     type: Number,
     default: 0,
+    index:true,
   },
 });
 const model = mongoose.model("User", userSchema);
