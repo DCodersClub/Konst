@@ -7,7 +7,10 @@ const { ensureAuthenticated } = require("../config/auth");
 const crypto = require("crypto");
 
 router.get("/login", async (req, res) => {
-	res.render("user/login.ejs");
+	if(req.isAuthenticated())
+		res.redirect("/");
+	else
+		res.render("user/login.ejs");
 });
 
 router.post("/login", async (req, res, next) => {
@@ -25,7 +28,10 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/register", async (req, res) => {
-	res.render("user/register.ejs");
+	if(req.isAuthenticated())
+		res.redirect("/");
+	else
+		res.render("user/register.ejs");
 });
 
 router.post("/register", async (req, res) => {
