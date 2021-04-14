@@ -30,12 +30,15 @@ router.get("/register", async (req, res) => {
 
 router.post("/register", async (req, res) => {
 	let errors = [];
-	const { name, email, mobileNumber, password, collegeName } = req.body;
+	const { name, email, mobileNumber, password,password2, collegeName } = req.body;
 	if (!name || !email || !mobileNumber || !password || !collegeName) {
 		errors.push({ msg: "Fields Cant be empty" });
 	}
 	if (password.length < 6) {
 		errors.push({ msg: "Password should be more than 6 characters" });
+	}
+	if (password!=password2){
+		errors.push({ msg: "Passwords does not match" });
 	}
 
 	try {
@@ -118,7 +121,7 @@ router.post("/profile", ensureAuthenticated, async (req, res) => {
 					user: updatedUser,
 				});
 			} else {
-				errors.push({ msg: "Password Does not matched" });
+				errors.push({ msg: "Incorrect Password !" });
 			}
 		}
 		if (errors.length > 0) {
