@@ -1,13 +1,23 @@
 const currentPath = window.location.pathname;
 
-switch(currentPath){
-    case "/" : makeActive(".home");break;
-    case "/user/login" : makeActive(".login");break;
-    case "/user/profile" : makeActive(".profile");break;
-    case "/announcement" : makeActive(".annoucements");break;
+switch (currentPath) {
+  case "/":
+    makeActive(".home");
+    break;
+  case "/user/login":
+    makeActive(".login");
+    break;
+  case "/user/profile":
+    makeActive(".profile");
+    break;
+  case "/announcement":
+    makeActive(".annoucements");
+    break;
+  case "/leaderboard":
+    makeActive(".leaderboard");
+    break;
 }
 
-
-function makeActive(navElement){
-    $(navElement).addClass('is-active');
+function makeActive(navElement) {
+  $(navElement).addClass("is-active");
 }

@@ -6,13 +6,16 @@ const passport = require("passport");
 const { mongo } = require("mongoose");
 const { ensureAuthenticated } = require("../config/auth");
 
-
-const start = new Date("April 13, 2021 09:00:00");
+const start = new Date("April 15, 2021 12:00:00");
 
 router.get("/", ensureAuthenticated, async (req, res) => {
-  res.render("contest.ejs", {
-    name: req.user.name,
-  });
+  if (getCurrentDiffMillis(start) <= 0) {
+    res.send("Contest not running");
+  } else {
+    res.render("contest.ejs", {
+      name: req.user.name,
+    });
+  }
 });
 
 router.get("/questions", ensureAuthenticated, async (req, res) => {
@@ -30,7 +33,7 @@ router.get("/questions", ensureAuthenticated, async (req, res) => {
             user
               .save()
               .then(() => {
-                res.send({questions:questions,solved:user.solved});
+                res.send({ questions: questions, solved: user.solved });
               })
               .catch((err) => res.sendStatus(500));
           });
@@ -39,48 +42,52 @@ router.get("/questions", ensureAuthenticated, async (req, res) => {
           res.sendStatus(500);
         });
     } else {
-      res.send({questions:user.questions,solved:user.solved});
+      res.send({ questions: user.questions, solved: user.solved });
     }
   });
 });
 
 router.post("/success", function (req, res) {
-  if(!req.user){
-res.sendStatus(403);
-  }
-  else{
-  let { questionIndex } = req.body;
-  questionIndex-=1;
-  const penalty = new Date()-start;
+  if (!req.user) {
+    res.sendStatus(403);
+  } else {
+    let { questionIndex } = req.body;
+    questionIndex -= 1;
+    const penalty = new Date() - start;
 
-  User.findOne({ email: req.user.email })
-    .then((user) => {
-      if (!user.solved.includes(parseInt(questionIndex))) {
-        user.solved.push(parseInt(questionIndex));
-        if(user.score == null || typeof user.score == 'undefined'){
-          user.score = 100;
+    User.findOne({ email: req.user.email })
+      .then((user) => {
+        if (!user.solved.includes(parseInt(questionIndex))) {
+          user.solved.push(parseInt(questionIndex));
+          if (user.score == null || typeof user.score == "undefined") {
+            user.score = 100;
+          } else {
+            user.score += 100;
+          }
+          user.time = penalty;
         }
-        else{
-        user.score += 100;
-        }
-        user.time = penalty;
-      }
 
-      user
-        .save()
-        .then(() => {
-          res.sendStatus(200);
-        })
-        .catch((err) => {
-          console.log(err);
-          res.sendStatus(500);
-        });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.sendStatus(500);
-    });
+        user
+          .save()
+          .then(() => {
+            res.sendStatus(200);
+          })
+          .catch((err) => {
+            console.log(err);
+            res.sendStatus(500);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+      });
   }
 });
 
 module.exports = router;
+
+function getCurrentDiffMillis(start) {
+  const currentDate = new Date();
+  let diff = currentDate - start;
+  return diff;
+}

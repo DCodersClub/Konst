@@ -1,37 +1,40 @@
 <html>
-	<head>
-		<title>Konst - Home</title>
-		<link rel="stylesheet" href="/css/global.css" />
-		<link rel="stylesheet" href="/css/index.css" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
-			rel="stylesheet"
-		/>
-		<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-	</head>
-	<body>
-		<%-include("partials/background.ejs")%>
-		<%-include("partials/navbar.ejs")%>
-		<div class="main-content">
-			<h1 class="main-heading">Konst - April 2021</h1>
-			<h3 class="sub-heading">
-				Can you beat your friends at the art of programming?
-			</h3>
-			<h2 class="sub-heading timer-text">
-				STARTS IN :
-				<span class="timer">25 hours 39 minutes 23 seconds</span>
-			</h2>
+  <head>
+    <title>Konst - Home</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+      integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <%-include("partials/background.ejs")%> <%-include("partials/navbar.ejs")%>
+    <div class="main-content">
+      <h1 class="main-heading">Konst - April 2021</h1>
+      <h3 class="sub-heading">
+        Can you beat your friends at the art of programming?
+      </h3>
+      <h2 class="sub-heading timer-text">
+        STARTS IN :
+        <span class="timer"></span>
+      </h2>
 
-			<a href="/user/register">
-				<button class="register-button">Register Now</button>
-			</a>
+      <a href="/user/register">
+        <button class="register-button register">Register Now</button>
+      </a>
 
-			<a href="/contest">
-				<button class="register-button">Compete Now</button>
-			</a>
-		</div>
-		<script src="/js/nav.js"></script>
-		<script src="/js/time-home.js"></script>
-	</body>
+      <a href="/contest">
+        <button class="register-button compete">Compete Now</button>
+      </a>
+    </div>
+    <script src="/js/nav.js"></script>
+    <script src="/js/time-home.js"></script>
+  </body>
 </html>

@@ -6,7 +6,11 @@ let board = [];
 updateLeaderboard();
 
 router.get("/", function (req, res) {
-  res.render("leaderboard.ejs", { board });
+  if (req.isAuthenticated()) {
+    res.render("leaderboard.ejs", { user: req.user, board });
+  } else {
+    res.render("leaderboard.ejs", { board });
+  }
 });
 
 setInterval(updateLeaderboard, 10000);
