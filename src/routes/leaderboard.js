@@ -6,28 +6,24 @@ let board = [];
 updateLeaderboard();
 
 router.get("/", function (req, res) {
-<<<<<<< HEAD
   if (req.isAuthenticated()) {
     res.render("leaderboard.ejs", { user: req.user, board });
   } else {
     res.render("leaderboard.ejs", { board });
   }
-=======
-	res.render("leaderboard.ejs", { board });
->>>>>>> 78a104c24f269df104ab6e91e4b72bb062a0ad7a
 });
 
 setInterval(updateLeaderboard, 10000);
 
 function updateLeaderboard() {
-	User.find({}, { name: 1, score: 1, time: 1 })
-		.sort({ score: -1,time:1 })
-		.then((users) => {
-			board = users;
-		})
-    .catch((err)=>{
-      console.log(err);
+  User.find({}, { name: 1, score: 1, time: 1 })
+    .sort({ score: -1, time: 1 })
+    .then((users) => {
+      board = users;
     })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 // function updateLeaderboard() {
@@ -51,6 +47,5 @@ function updateLeaderboard() {
 // 			console.log(err);
 // 		});
 // }
-
 
 module.exports = router;
