@@ -4,13 +4,13 @@ let userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    maxLength:30,
+    maxLength: 30,
   },
   email: {
     type: String,
     unique: true,
     required: true,
-    maxLength:50,
+    maxLength: 50,
   },
 
   mobileNumber: {
@@ -25,7 +25,7 @@ let userSchema = new mongoose.Schema({
 
   collegeName: {
     type: String,
-    maxLength:256,
+    maxLength: 256,
   },
 
   questions: {
@@ -39,13 +39,13 @@ let userSchema = new mongoose.Schema({
   score: {
     type: Number,
     default: 0,
-    index:true,
+    index: true,
   },
 
   time: {
     type: Number,
     default: 0,
-    index:true,
+    index: true,
   },
 });
 const model = mongoose.model("User", userSchema);
