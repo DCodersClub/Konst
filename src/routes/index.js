@@ -4,6 +4,7 @@ const { ensureAuthenticated } = require("../config/auth");
 
 // Get: Returns home page
 router.get("/", async (req, res) => {
+  console.log(req.user);
   if (req.isAuthenticated()) {
     res.render("index.ejs", { user: req.user });
   } else {

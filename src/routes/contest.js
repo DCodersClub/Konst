@@ -9,9 +9,13 @@ const { ensureAuthenticated } = require("../config/auth");
 const start = new Date("April 15, 2021 12:00:00");
 
 router.get("/", ensureAuthenticated, async (req, res) => {
-  res.render("contest.ejs", {
-    name: req.user.name,
-  });
+  if (getCurrentDiffMillis(start) <= 0) {
+    res.send("Contest not running");
+  } else {
+    res.render("contest.ejs", {
+      name: req.user.name,
+    });
+  }
 });
 
 router.get("/questions", ensureAuthenticated, async (req, res) => {
