@@ -22,6 +22,7 @@ router.post("/login", async (req, res, next) => {
 });
 
 router.get("/logout", (req, res) => {
+	req.session=null;
 	req.logout();
 	req.flash("success_msg", "Logged Out succesfully");
 	res.redirect("/user/login");
