@@ -14,6 +14,7 @@ router.get("/", ensureAuthenticated, async (req, res) => {
   } else {
     res.render("contest.ejs", {
       name: req.user.name,
+      hello:"Javafan",
     });
   }
 });

@@ -25,7 +25,7 @@ let userSchema = new mongoose.Schema({
 
   collegeName: {
     type: String,
-    maxLength: 256,
+    maxLength: 100,
   },
 
   questions: {

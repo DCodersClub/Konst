@@ -28,6 +28,8 @@
                     name="name"
                     placeholder="Name"
                     required
+                    maxlength="30"
+                    readonly
                     value="<%= user.name %>"
                 />
                 <input
@@ -36,6 +38,8 @@
                     name="email"
                     placeholder="Email"
                     required
+                    readonly
+                    maxlength="50"
                     value="<%=user.email%>"
                 />
                 <input
@@ -44,29 +48,8 @@
                     name="mobileNumber"
                     placeholder="Whatsapp Number"
                     required
+                    maxlength="15"
                     value="<%=user.mobileNumber %>"
-                />
-                <input
-                    type="password"
-                    id="oldPassword"
-                    name="oldPassword"
-                    placeholder="Old Password"
-                    required
-                />
-                <input
-                    type="password"
-                    id="newPassword"
-                    name="newPassword"
-                    placeholder="New Password"
-                    required
-                />
-
-                <input
-                    type="password"
-                    id="newPassword2"
-                    name="newPassword2"
-                    placeholder="Again Enter New Password"
-                    required
                 />
                 
                 <input
@@ -76,12 +59,14 @@
                     placeholder="College Name"
                     required
                     value="<%= user.collegeName%>"
+                    maxlength="200"
                 />
 
                 <button type="submit">Update</button>
-            
+                <a class='register-link' href="/user/profile/updatePassword">Change Password</a>
             </form>
         </div>
+
         <script src="/js/nav.js"></script>
 	</body>
 </html>
