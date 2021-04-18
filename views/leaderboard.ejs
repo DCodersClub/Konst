@@ -29,7 +29,7 @@
 		<% for(var i=0;i<board.length;i++){ %>
         <tr>
           <td><%=i+1%></td>
-          <td><%=board[i].name%></td>
+          <td><%=board[i].name%>(<%=board[i].collegeName%>)</td>
           <td><%=board[i].score%></td>
 		  <% if(board[i].time==0) {%>
 			  <td>-</td>

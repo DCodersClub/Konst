@@ -26,26 +26,4 @@ function updateLeaderboard() {
     });
 }
 
-// function updateLeaderboard() {
-// 	User.find({})
-// 		.then((users) => {
-// 			board = [];
-
-// 			users.forEach((user) => {
-// 				board.push({
-// 					name: user.name,
-// 					score: user.score,
-// 					time: user.time,
-// 				});
-// 			});
-
-// 			board.sort(function (b, a) {
-// 				return a.score - b.score || b.time - a.time;
-// 			});
-// 		})
-// 		.catch((err) => {
-// 			console.log(err);
-// 		});
-// }
-
 module.exports = router;

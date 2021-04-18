@@ -1,4 +1,6 @@
-const start = new Date("April 15, 2021 12:00:00");
+const start = new Date("April 17, 2021 19:39:00 GMT+0530");
+const end = new Date("April 18, 2021 19:41:00 GMT+0530");
+
 const updateInterval = 100;
 let diff = 0.0;
 
@@ -6,9 +8,18 @@ diff = getCurrentDiff(start);
 
 if (getCurrentDiffMillis(start) <= 0) {
   $(".compete").hide();
+  $(".leaderboard").hide();
 } else {
   $(".register").hide();
+  $(".leaderboard").hide();
   $(".timer-text").html("STARTED: <span class='timer'></span> AGO");
+}
+
+if (getCurrentDiffMillis(end) >= 0) {
+  $(".register").hide();
+  $(".compete").hide();
+  $(".leaderboard").show();
+  $(".timer-text").html('<span class="timer">THE CONTEST HAS ENDED</span>');
 }
 
 updateTimer(diff);
@@ -29,8 +40,12 @@ function getCurrentDiff(start) {
   return millisToMinutesAndSeconds(diff);
 }
 
-function updateTimer(age) {
-  $(".timer").html(age);
+function updateTimer(time) {
+  if (getCurrentDiffMillis(end) >= 0) {
+    $(".timer-text").html('<span class="timer">THE CONTEST HAS ENDED</span>');
+  } else {
+    $(".timer").html(time);
+  }
 }
 
 function millisToMinutesAndSeconds(millis) {

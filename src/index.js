@@ -1,8 +1,7 @@
-require('dotenv').config();
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const loaders = require("./loaders");
-
 
 async function startServer() {
   const app = express();
@@ -17,16 +16,19 @@ async function startServer() {
 
   // setting up routes
   // Will see if we can do this in another file
-  const indexRoutes=  require("./routes/index");
-  const userRoutes= require("./routes/user");
+  const indexRoutes = require("./routes/index");
+  const userRoutes = require("./routes/user");
   const leaderboardRoutes = require("./routes/leaderboard");
   const adminRoutes = require("./routes/admin");
   const contestRoutes = require("./routes/contest");
-  app.use("/admin",adminRoutes);
-  app.use("/leaderboard",leaderboardRoutes);
-  app.use("/contest",contestRoutes);
-  app.use("/user",userRoutes);
-  app.use("/",indexRoutes);
+  app.use("/admin", adminRoutes);
+  app.use("/leaderboard", leaderboardRoutes);
+  app.use("/contest", contestRoutes);
+  app.use("/user", userRoutes);
+  app.use("/", indexRoutes);
+  app.get("*", function (req, res) {
+    res.status(404).render("404");
+  });
 }
 
 startServer();

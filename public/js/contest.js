@@ -65,6 +65,9 @@ function submitAnswer() {
           if (errorThrown.toString() == "Forbidden") {
             alert("Session Timed Out");
             window.location.href = "/user/login";
+          } else if (errorThrown.toString() == "Locked") {
+            alert("Contest has ended");
+            window.location.href = "/leaderboard";
           } else {
             alert(
               "Error submitting response: " +

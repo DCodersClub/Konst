@@ -6,15 +6,18 @@ const passport = require("passport");
 const { mongo } = require("mongoose");
 const { ensureAuthenticated } = require("../config/auth");
 
-const start = new Date("April 15, 2021 12:00:00");
+const start = new Date("April 17, 2021 19:39:00 GMT+0530");
+const end = new Date("April 18, 2021 19:41:00 GMT+0530");
 
 router.get("/", ensureAuthenticated, async (req, res) => {
   if (getCurrentDiffMillis(start) <= 0) {
     res.send("Contest not running");
+  }
+  if (getCurrentDiffMillis(end) >= 0) {
+    res.send("Contest has ended");
   } else {
     res.render("contest.ejs", {
       name: req.user.name,
-      hello:"Javafan",
     });
   }
 });
@@ -52,36 +55,40 @@ router.post("/success", function (req, res) {
   if (!req.user) {
     res.sendStatus(403);
   } else {
-    let { questionIndex } = req.body;
-    questionIndex -= 1;
-    const penalty = new Date() - start;
+    if (getCurrentDiffMillis(end) >= 0) {
+      res.sendStatus(423);
+    } else {
+      let { questionIndex } = req.body;
+      questionIndex -= 1;
+      const penalty = new Date() - start;
 
-    User.findOne({ email: req.user.email })
-      .then((user) => {
-        if (!user.solved.includes(parseInt(questionIndex))) {
-          user.solved.push(parseInt(questionIndex));
-          if (user.score == null || typeof user.score == "undefined") {
-            user.score = 100;
-          } else {
-            user.score += 100;
+      User.findOne({ email: req.user.email })
+        .then((user) => {
+          if (!user.solved.includes(parseInt(questionIndex))) {
+            user.solved.push(parseInt(questionIndex));
+            if (user.score == null || typeof user.score == "undefined") {
+              user.score = 100;
+            } else {
+              user.score += 100;
+            }
+            user.time = penalty;
           }
-          user.time = penalty;
-        }
 
-        user
-          .save()
-          .then(() => {
-            res.sendStatus(200);
-          })
-          .catch((err) => {
-            console.log(err);
-            res.sendStatus(500);
-          });
-      })
-      .catch((err) => {
-        console.log(err);
-        res.sendStatus(500);
-      });
+          user
+            .save()
+            .then(() => {
+              res.sendStatus(200);
+            })
+            .catch((err) => {
+              console.log(err);
+              res.sendStatus(500);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.sendStatus(500);
+        });
+    }
   }
 });
 

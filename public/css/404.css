@@ -1,0 +1,14 @@
+.main-container {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+}
+
+.main-container img {
+  width: 25%;
+  margin-bottom: 50px;
+}

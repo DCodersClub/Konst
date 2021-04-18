@@ -1,4 +1,5 @@
-const start = new Date("April 15, 2021 12:00:00");
+const start = new Date("April 17, 2021 19:39:00 GMT+0530");
+const end = new Date("April 18, 2021 19:41:00 GMT+0530");
 const updateInterval = 100;
 let diff = 0.0;
 
