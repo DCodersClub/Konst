@@ -1,13 +1,19 @@
-const start = new Date("April 17, 2021 19:39:00 GMT+0530");
-const end = new Date("April 18, 2021 19:41:00 GMT+0530");
-const updateInterval = 100;
+const start = new Date("April 18, 2021 20:00:00 GMT+0530");
+const end = new Date("April 18, 2021 20:12:00 GMT+0530");
+let updateInterval = 100;
 let diff = 0.0;
 
 diff = getCurrentDiff(start);
 updateTimer(diff);
 setInterval(function () {
-  diff = getCurrentDiff(start);
-  updateTimer(diff);
+  if (getCurrentDiffMillis(end) >= 0) {
+    updateInterval = 99999;
+    alert("Contest has ended");
+    window.location.href = "/leaderboard";
+  } else {
+    diff = getCurrentDiff(start);
+    updateTimer(diff);
+  }
 }, 1000);
 
 function getCurrentDiff(start) {
@@ -35,4 +41,10 @@ function pad(n, width, z) {
   z = z || "0";
   n = n + "";
   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
+
+function getCurrentDiffMillis(start) {
+  const currentDate = new Date();
+  let diff = currentDate - start;
+  return diff;
 }
