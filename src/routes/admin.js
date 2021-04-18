@@ -37,7 +37,7 @@ router.get("/login", async (req, res) => {
 
 router.post("/login", async (req, res, next) => {
   let { username, password } = req.body;
-  if ((username = "admin" && password == "password")) {
+  if ((username = "admin" && password == "thisisaweakpassword")) {
     res.cookie("authed", "true");
     res.redirect("admin/dashboard");
   }
@@ -55,7 +55,7 @@ router.post("/question/add", function (req, res) {
   newQuestion
     .save()
     .then(() => {
-      res.redirect("/admin");
+      res.redirect("/admin/dashboard");
     })
     .catch((err) => {
       res.send(err);

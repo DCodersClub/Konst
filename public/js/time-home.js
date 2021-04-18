@@ -1,5 +1,5 @@
 const start = new Date("April 18, 2021 20:00:00 GMT+0530");
-const end = new Date("April 18, 2021 20:12:00 GMT+0530");
+const end = new Date("April 19, 2021 00:00:00 GMT+0530");
 
 const updateInterval = 100;
 let diff = 0.0;
@@ -8,17 +8,17 @@ diff = getCurrentDiff(start);
 
 if (getCurrentDiffMillis(start) <= 0) {
   $(".compete").hide();
-  $(".leaderboard").hide();
+  $(".leaderboard-button").hide();
 } else {
   $(".register").hide();
-  $(".leaderboard").hide();
+  $(".leaderboard-button").hide();
   $(".timer-text").html("STARTED: <span class='timer'></span> AGO");
 }
 
 if (getCurrentDiffMillis(end) >= 0) {
   $(".register").hide();
   $(".compete").hide();
-  $(".leaderboard").show();
+  $(".leaderboard-button").show();
   $(".timer-text").html('<span class="timer">THE CONTEST HAS ENDED</span>');
 }
 

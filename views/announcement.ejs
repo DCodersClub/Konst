@@ -19,7 +19,6 @@
 			<% annoucements.forEach((annouce)=>{%>
 				<div class="annoucement">
 					<div class="heading"><%= new Date(annouce.createdOn).toLocaleDateString()+ ":" + annouce.subject %> </div> 
-					<h6><%= new Date(annouce.createdOn).getHours().toString().padStart(2,'0')  %>:<%= new Date(annouce.createdOn).getMinutes().toString().padStart(2,'0') %></h6>
 					<div class="content"><%= annouce.content%></div>
 				</div>
 			<%});%>

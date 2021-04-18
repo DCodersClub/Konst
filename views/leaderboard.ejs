@@ -19,6 +19,9 @@
     <%-include("partials/background.ejs")%> <%-include("partials/navbar.ejs")%>
     <div class="board-container">
       <h1>LEADERBOARD</h1>
+      <% if(typeof rank != 'undefined'){%>
+      <h3 class='my-rank'>Your rank : <span class="rank"><%=rank%></span></h3>
+      <%}%>
       <table>
         <tr>
           <th>Rank</th>
@@ -29,7 +32,7 @@
 		<% for(var i=0;i<board.length;i++){ %>
         <tr>
           <td><%=i+1%></td>
-          <td><%=board[i].name%>(<%=board[i].collegeName%>)</td>
+          <td><%=board[i].name%> (<%=board[i].collegeName%>)</td>
           <td><%=board[i].score%></td>
 		  <% if(board[i].time==0) {%>
 			  <td>-</td>

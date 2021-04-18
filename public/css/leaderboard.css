@@ -13,6 +13,13 @@ body {
   color: #33ff00;
 }
 
+.my-rank{
+  margin-top: 25px;
+}
+
+.rank{
+  color : #33ff00;
+}
 table {
   background-color: rgba(0, 0, 0, 0.356);
   margin-top: 50px;
