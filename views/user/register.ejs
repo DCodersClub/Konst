@@ -26,6 +26,8 @@
 				name="name"
 				placeholder="Name"
 				required
+				maxlength="30"
+
 				value="<%= typeof name != 'undefined' ? name: '' %>"
 			/>
 			<input
@@ -34,6 +36,7 @@
 				name="email"
 				placeholder="Email"
 				required
+				maxlength="50"
 				value="<%= typeof email != 'undefined' ? email: '' %>"
 			/>
 			<input
@@ -42,28 +45,17 @@
 				name="mobileNumber"
 				placeholder="Whatsapp Number"
 				required
+				maxlength="15"
 				value="<%= typeof mobileNumber != 'undefined' ? mobileNumber: '' %>"
 			/>
-			<input
-				type="password"
-				id="password"
-				name="password"
-				placeholder="Password"
-				required
-			/>
-			<input
-				type="password"
-				id="password2"
-				placeholder="Confirm Password"
-				name="password2"
-				required
-			/>
+
             <input
                 type="text"
                 id="collegeName"
                 name="collegeName"
                 placeholder="College Name"
                 required
+				maxlength="100"
                 value="<%= typeof collegeName != 'undefined' ? collegeName: '' %>"
             />
 
