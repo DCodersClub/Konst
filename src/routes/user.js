@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Token = require("../models/token");
 const router = require("express").Router();
 const mailer = require("../services/mailer");
 const bcrypt = require("bcryptjs");
@@ -43,11 +44,11 @@ router.post("/register", async (req, res) => {
 	if (!name || !email || !mobileNumber || !password || !collegeName) {
 		errors.push({ msg: "Fields Cant be empty" });
 	}
-	if (password.length < 6 && password.length > 20) {
-		errors.push({ msg: "Password should be more between 6 and 20 characters" });
+	if (password.length < 6 || password.length > 20) {
+		errors.push({ msg: "Password should be between 6 to 20 characters" });
 	}
 	if (name.length > 30 || email.length > 50 || collegeName.length > 200) {
-		errors.push({ msg:"APNI KABILIYAT KAHI AUR" });
+		errors.push({ msg: "APNI KABILIYAT KAHI AUR" });
 	}
 	if (password != password2) {
 		errors.push({ msg: "Passwords does not match" });
@@ -55,7 +56,7 @@ router.post("/register", async (req, res) => {
 
 	try {
 		let user = await User.findOne({ email: email });
-		if (user) {
+		if (user && user.isVerified) {
 			errors.push({ msg: "Email already in use" });
 		}
 		if (errors.length > 0) {
@@ -67,6 +68,10 @@ router.post("/register", async (req, res) => {
 				collegeName,
 			});
 		} else {
+
+			//Delete any past user with this email id
+			await User.deleteMany({ email });
+
 			const saltRounds = 10;
 			const hashPass = await bcrypt.hash(password, saltRounds);
 			let newUser = User({
@@ -76,17 +81,29 @@ router.post("/register", async (req, res) => {
 				password: hashPass,
 				collegeName: collegeName,
 			});
-			newUser
-				.save()
-				.then(() => {
-					req.flash("success_msg", "Registered Successfully");
-					mailer.sendMail(email, "Welcome to Konst", "Good luck!");
-					res.redirect("/user/login");
-				})
-				.catch((err) => {
-					console.log(err);
-					res.sendStatus(500);
-				});
+			newUser=await newUser.save();
+			let token = new Token({
+				_userId: newUser._id,
+				token: crypto.randomBytes(16).toString("hex"),
+			});
+			await token.save();
+			let message =
+				"Hello " +
+				name +
+				",\n\n" +
+				"Please verify your account by clicking the link: \nhttp://" +
+				req.headers.host +
+				"/user/confirmation/" +
+				email +
+				"/" +
+				token.token +
+				"\n\nThank You!\n";
+			req.flash(
+				"success_msg",
+				"Registered Successfully, Check Your Mail To Verify Your Account. Didn't Receieved the mail? Click on resend."
+			);
+			mailer.sendMail(email, "Welcome to Konst", message);
+			res.redirect("/user/confirm");
 		}
 	} catch (e) {
 		console.log(e);
@@ -99,7 +116,7 @@ router.get("/profile", ensureAuthenticated, async (req, res) => {
 
 router.post("/profile", ensureAuthenticated, async (req, res) => {
 	let errors = [];
-	let user=req.user;
+	let user = req.user;
 	const { name, email, mobileNumber, collegeName } = req.body;
 
 	if (email != req.user.email) {
@@ -186,8 +203,84 @@ router.post(
 	}
 );
 
-router.get("/forgot", (req, res) => {
-	res.render("user/forgot_password.ejs");
+router.get("/confirmation/:email/:token", async (req, res) => {
+	try {
+		let token = await Token.findOne({ token: req.params.token });
+		if (!token) {
+			return res.render("user/confirm", {
+				error:
+					"Your verification link may have expired. Please click on resend to verify your Email.",
+			});
+		} else {
+			let user = await User.findOne({
+				_id: token._userId,
+				email: req.params.email,
+			});
+			if (!user) {
+				return res.render("user/confirm", {
+					error:
+						"We were unable to find a user for this verification. Please SignUp!",
+				});
+			} else if (user.isVerified) {
+				return res.render("user/confirm", {
+					error: "User has been already verified. Please Login",
+				});
+			} else {
+				user.isVerified = true;
+				await user.save();
+				req.flash("success_msg", "Account Verified. Login!");
+				res.redirect("/user/login");
+			}
+		}
+	} catch (err) {
+		console.log(err);
+		res.status(503).send("Internal Server Error");
+	}
+});
+
+router.get("/confirm", async (req, res) => {
+	res.render("user/confirm.ejs");
+});
+
+router.post("/resendLink", async (req, res) => {
+	try {
+		const { email } = req.body;
+		let user = await User.findOne({ email });
+		if (!user) {
+			res.render("user/confirm.ejs", {
+				error:
+					"We were unable to find a user with that email. Make sure your Email is correct!",
+			});
+		} else if (user.isVerified) {
+			res.render("user/confirm.ejs", {
+				confirm: {
+					msg: "This account has been already verified. Please log in.",
+				},
+			});
+		} else {
+			await Token.deleteMany({ _userId: user._id });
+			let token = new Token({
+				_userId: user._id,
+				token: crypto.randomBytes(16).toString("hex"),
+			});
+			await token.save();
+			let message =
+				"Please verify your account by clicking the link: \nhttp://" +
+				req.headers.host +
+				"/user/confirmation/" +
+				email +
+				"/" +
+				token.token +
+				"\n\nThank You!\n";
+			mailer.sendMail(email, "Konst Verification Link", message);
+			res.render("user/confirm.ejs", {
+				confirm: { msg: "New Verification Link sended successfully" },
+			});
+		}
+	} catch (err) {
+		console.log(err);
+		res.status(500).send("Internal Server Error");
+	}
 });
 
 router.post("/forgot", async (req, res) => {
@@ -207,7 +300,12 @@ router.post("/forgot", async (req, res) => {
 		});
 	} catch (err) {
 		console.log(err);
+		res.status(500).send("Internal Server Error");
 	}
+});
+
+router.get("/forgot", (req, res) => {
+	res.render("user/forgot_password.ejs");
 });
 
 module.exports = router;

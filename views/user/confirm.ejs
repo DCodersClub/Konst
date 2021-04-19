@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Konst - Login</title>
+    <title>Konst - Confirm</title>
     <link rel="stylesheet" href="/css/global.css" />
     <link rel="stylesheet" href="/css/login.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -17,32 +17,23 @@
     <%- include("../partials/navbar.ejs") %> 
     
       <div class='form-container'>
-        <h1 class='main-heading'>LOGIN</h1>
+        <h1 class='main-heading'>VERIFICATION</h1>
         <div class='input-container'>
-          <%-include("../partials/messages.ejs") %>
-        <form method="POST" action="/user/login">
-          <input
+        <%-include("../partials/messages.ejs") %>
+
+        <br/>
+        <br/>
+        <form method="POST" action="/user/resendLink">
+            <input
             type="email"
             id="email"
             name="email"
             placeholder="Email"
-            maxlength="50"
             required
           />
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Password"
-            maxlength="20"
-            required
-          />
-
-          <a class='register-link' href="/user/register">Dont have an account ?</a><br>
-          <a class='register-link' href="/user/forgot">Forgot Password?</a>
-          <a class='register-link' href="/user/confirm">Verify Account</a>
+          <button type="submit">Resend Verfication Link</button>
+        </form>
         </div>
-          <button type="submit">Log-In</button></form>
       </div>
       <script src="/js/nav.js"></script>
 

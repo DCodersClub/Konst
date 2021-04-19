@@ -28,6 +28,11 @@ let userSchema = new mongoose.Schema({
     maxLength: 100,
   },
 
+  isVerified:{
+    type: Boolean,
+    default:false,
+  },
+  
   questions: {
     type: Array,
   },
