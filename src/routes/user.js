@@ -107,6 +107,7 @@ router.post("/register", async (req, res) => {
 		}
 	} catch (e) {
 		console.log(e);
+		res.status(500).send("Internal Server Error");
 	}
 });
 
@@ -151,6 +152,7 @@ router.post("/profile", ensureAuthenticated, async (req, res) => {
 			}
 		} catch (err) {
 			console.log(err);
+			res.status(500).send("Internal Server Error");
 		}
 	}
 });
@@ -198,6 +200,7 @@ router.post(
 				});
 			} catch (err) {
 				console.log(err);
+				res.status(500).send("Internal Server Error");
 			}
 		}
 	}
@@ -234,7 +237,7 @@ router.get("/confirmation/:email/:token", async (req, res) => {
 		}
 	} catch (err) {
 		console.log(err);
-		res.status(503).send("Internal Server Error");
+		res.status(500).send("Internal Server Error");
 	}
 });
 

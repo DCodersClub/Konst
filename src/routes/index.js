@@ -21,6 +21,7 @@ router.get("/announcement", async (req, res) => {
     }
   } catch (err) {
     console.log(err);
+    res.status(500).send("Internal Server Error");
   }
 });
 
