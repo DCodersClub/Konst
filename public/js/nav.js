@@ -10,6 +10,9 @@ switch (currentPath) {
   case "/user/profile":
     makeActive(".profile");
     break;
+  case "/rules":
+    makeActive(".rules");
+    break;
   case "/announcement":
     makeActive(".annoucements");
     break;

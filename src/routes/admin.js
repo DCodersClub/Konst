@@ -39,11 +39,15 @@ router.post("/login", async (req, res, next) => {
   let { username, password } = req.body;
   if ((username = "admin" && password == "thisisaweakpassword")) {
     res.cookie("authed", "true");
-    res.redirect("admin/dashboard");
+    res.redirect("/admin/dashboard");
   }
 });
 
 router.post("/question/add", function (req, res) {
+  if (req.cookies.authed != "true") {
+    res.sendStatus(403);
+  }
+  else{
   var { index, question, answer } = req.body;
 
   var newQuestion = Question({
@@ -60,6 +64,7 @@ router.post("/question/add", function (req, res) {
     .catch((err) => {
       res.send(err);
     });
+  }
 });
 
 router.get("/logout", (req, res) => {
@@ -75,6 +80,10 @@ router.get("/all", async (req, res) => {
 
 
 router.post("/announce",async (req,res)=>{
+  if (req.cookies.authed != "true") {
+    res.sendStatus(403);
+  }
+  else{
   try{
     const {subject,message}=req.body;
 
@@ -92,7 +101,7 @@ router.post("/announce",async (req,res)=>{
     res.redirect("/admin")
   }catch(err){
     console.log(err);
-  }
-})
+  }}
+});
 
 module.exports = router;

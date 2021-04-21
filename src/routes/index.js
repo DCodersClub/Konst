@@ -11,6 +11,10 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/rules",function(req,res){
+  res.render("rules.ejs");
+});
+
 router.get("/announcement", async (req, res) => {
   try {
     const annoucements = await Annoucement.find({}).sort({ createdOn: -1 });
