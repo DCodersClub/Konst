@@ -27,6 +27,10 @@ router.get("/about", function (req, res) {
   }
 });
 
+router.get("/mobile", function (req, res) {
+  res.render("mobile.ejs");
+});
+
 router.get("/announcement", async (req, res) => {
   try {
     const annoucements = await Annoucement.find({}).sort({ createdOn: -1 });

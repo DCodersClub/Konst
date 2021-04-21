@@ -8,7 +8,11 @@
       href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
       rel="stylesheet"
     />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="nav-container">
@@ -16,68 +20,54 @@
     </div>
 
     <div class="left-container">
-
-        <div class="ascii-art" >
-            3.141592653589793238462643383279502884197169399375
+      <div class="ascii-art">
+        3.141592653589793238462643383279502884197169399375
         105820974944592307816406286208998628034825342117067982
-      14808651328230664709384460955058223172535940812848111745
-    0284102701938521105559644622948954930381964428810975665933
-    4461284756482337867831652712019091456485669234603486104543
-  26648213          393607              26024914              
-  1273              724587            0066063155              
-8817                488152            0920962829              
-25                  409171            53643678                
-                    925903            60011330                
-                    530548            82046652                
-                  138414              69519415                
-                  116094              33057270                
-                  365759              59195309                
-                  218611              73819326                
-                  117931              05118548                
-                07446237              99627495                
-                67351885            7527248912                
-              2793818301            1949129833                
-              6733624406            5664308602                
-            139494639522            4737190702                
-            1798609437              0277053921              71
-          762931767523              8467481846              76
-          694051320005              681271452635          6082
-        77857713427577              89609173637178      7214  
-      6844090122495343              014654958537105079227968  
-      92589235420199                  56112129021960864034    
-      41815981362977                  47713099605187072113    
-      499999983729                      7804995105973173      
-          281609                            63185950          
-        </div>
+        14808651328230664709384460955058223172535940812848111745
+        0284102701938521105559644622948954930381964428810975665933
+        4461284756482337867831652712019091456485669234603486104543 26648213
+        393607 26024914 1273 724587 0066063155 8817 488152 0920962829 25 409171
+        53643678 925903 60011330 530548 82046652 138414 69519415 116094 33057270
+        365759 59195309 218611 73819326 117931 05118548 07446237 99627495
+        67351885 7527248912 2793818301 1949129833 6733624406 5664308602
+        139494639522 4737190702 1798609437 0277053921 71 762931767523 8467481846
+        76 694051320005 681271452635 6082 77857713427577 89609173637178 7214
+        6844090122495343 014654958537105079227968 92589235420199
+        56112129021960864034 41815981362977 47713099605187072113 499999983729
+        7804995105973173 281609 63185950
+      </div>
     </div>
     <div class="right-container">
-        <ul class='question-list'>
-            <li class='1 link-active'>1</li>
-            <li class='2 link-disabled' >2</li>
-            <li class='3 link-disabled'>3</li>
-            <li class='4 link-disabled'>4</li>
-            <li class='5 link-disabled'>5</li>
-            <li class='6 link-disabled'>6</li>
-            <li class='7 link-disabled'>7</li>
-            <li class='8 link-disabled'>8</li>
-            <li class='9 link-disabled'>9</li>
-            <li class='10 link-disabled'>10</li>
+      <ul class="question-list">
+        <li class="1 link-active">1</li>
+        <li class="2 link-disabled">2</li>
+        <li class="3 link-disabled">3</li>
+        <li class="4 link-disabled">4</li>
+        <li class="5 link-disabled">5</li>
+        <li class="6 link-disabled">6</li>
+        <li class="7 link-disabled">7</li>
+        <li class="8 link-disabled">8</li>
+        <li class="9 link-disabled">9</li>
+        <li class="10 link-disabled">10</li>
+      </ul>
+      <hr />
+      <div class="messages"></div>
+      <h3 class="question-heading">
+        Problem <span class="question-number">0</span>
+      </h3>
+      <p class="question"></p>
+      <h3 class="question-heading answer-heading">Answer</h3>
 
-        </ul>
-        <hr>
-        <div class="messages">
-        </div>
-        <h3 class='question-heading'>Problem <span class="question-number">0</span></h3>
-        <p class='question'></p>
- <h3 class='question-heading answer-heading'>Answer</h3>
+      <input class="answer-field" type="text" />
+      <button class="submit-button" onclick="submitAnswer()">
+        Submit Answer
+      </button>
 
-<input class='answer-field' type='text'>
-<button class='submit-button' onclick="submitAnswer()">Submit Answer</button>
+      <hr />
+    </div>
+    <script src="/js/mobile.js"></script>
 
-<hr>
-
-</div>
-<script src="/js/contest.js"></script>
-<script src="/js/time.js"></script>
+    <script src="/js/contest.js"></script>
+    <script src="/js/time.js"></script>
   </body>
 </html>
