@@ -22,6 +22,8 @@
     <%-include("partials/background.ejs")%> <%-include("partials/navbar.ejs")%>
     <div class="main-container">
       <h1 class="main-heading">ABOUT KONST</h1>
+      <img src="/img/konst.png" class="logo" />
+
       <p>
         Konst is an initiative by D'Coders Club - The Techninal Institute Of
         <a href="http://srmcem.ac.in/">SRMGPC</a>. It is aimed at spreading the
@@ -48,11 +50,29 @@
         us!
       </p>
 
-      <a>Instagram</a><a>Linkedin</a>
+      <a class="link" target="_blank" href="https://instagram.com/dcodersclub"
+        >[Instagram]</a
+      ><a
+        class="link"
+        target="_blank"
+        href="https://www.linkedin.com/company/d-coders-club/"
+        >[Linkedin]</a
+      ><a class="link" target="_blank" href="https://twitter.com/DcoderClub"
+        >[Twitter]</a
+      >
+      <h1 class="main-heading">Sponsored By</h1>
+      <A href="https://www.geeksforgeeks.org/" target="_blank"
+        ><img src="/img/logo_gfg.png" class="logo gfg"
+      /></A>
+
       <h1 class="main-heading">THE DEVELOPERS</h1>
       <div class="cards">
-        <github-card data-user="purry03" data-theme="dark"></github-card>
-        <github-card data-user="bit-shashank" data-theme="dark"></github-card>
+        <a href="https://github.com/purry03" target="_blank"
+          ><img class="card" src="/img/purry03.png"
+        /></a>
+        <a href="https://github.com/bit-shashank" target="_blank"
+          ><img class="card" src="/img/bit-shashank.png"
+        /></a>
       </div>
     </div>
     <script src="/js/github.js" type="module"></script>

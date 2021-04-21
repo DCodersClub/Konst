@@ -9,8 +9,15 @@ body {
   text-align: center;
 }
 
-.main-container a {
+.link {
   border-bottom: 1px dashed #eee;
+  margin: 0 10px;
+  transition: all 0.25s;
+}
+
+.link:hover {
+  color: #33ff00;
+  border-color: #33ff00;
 }
 
 .main-heading {
@@ -27,7 +34,13 @@ p {
 }
 
 .logo {
-  filter: blur(0.25px);
+  display: inline-block;
+  height: 250px;
+  margin: 0 10px;
+}
+
+.gfg {
+  height: 250px;
 }
 
 .cards {
