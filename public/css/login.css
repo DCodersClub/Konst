@@ -13,6 +13,7 @@
 
 .main-heading {
   margin-bottom: 50px;
+  text-transform: capitalize !important;
 }
 .messages {
   margin-bottom: 25px;
