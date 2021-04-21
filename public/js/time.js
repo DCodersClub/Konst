@@ -8,7 +8,7 @@ diff = getCurrentDiff(start);
 updateTimer(diff);
 var update = setInterval(function () {
   if (getCurrentDiffMillis(end) >= 0) {
-    clearInterval(updateTimer);
+    clearInterval(update);
     alert("Contest has ended");
     window.location.href = "/leaderboard";
   } else {
