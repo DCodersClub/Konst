@@ -11,8 +11,12 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/rules",function(req,res){
+router.get("/rules", function (req, res) {
   res.render("rules.ejs");
+});
+
+router.get("/about", function (req, res) {
+  res.render("about.ejs");
 });
 
 router.get("/announcement", async (req, res) => {

@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>Konst - Home</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/about.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+      integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <%-include("partials/background.ejs")%> <%-include("partials/navbar.ejs")%>
+    <div class="main-container">
+      <h1 class="main-heading">ABOUT KONST</h1>
+      <p>
+        Konst is an initiative by D'Coders Club - The Techninal Institute Of
+        <a href="http://srmcem.ac.in/">SRMGPC</a>. It is aimed at spreading the
+        knowledge of computer science and programming and Konst is an integral
+        part of that goal. It aims to challege computer science students with
+        simple yet unique questions that require "out of the box" thinking and
+        quick problem solving. Konst is 100% free-to-use and offers
+        certifications free of cost to the top performers.
+      </p>
+      <img src="/img/Dcoders.png" class="logo" />
+      <p>
+        D'coders club is the first and the most unique Tech club of
+        <a href="http://srmcem.ac.in/">SRMGPC</a>. The club focuses on
+        enhancement and encouragement of skills. It conducts many competitions,
+        quizzes, etc to ensure this. D'coders club is the most useful and
+        beneficial amongst all other clubs. It, not only showcases the different
+        skills but also guides the beginners by conducting webinars and sharing
+        the best resources. The club comprises 10 outstanding coordinators, and
+        very talented 15 assistant coordinators. All the members have
+        contributed much and raised the club to this level. My supreme talented
+        Techies, Ideas are worthless until you get them out of ur head to see
+        what they can do. No matter what people tell you, technology and ideas
+        can change the world. So gear up your plans and refine your work with
+        us!
+      </p>
+
+      <a>Instagram</a><a>Linkedin</a>
+      <h1 class="main-heading">THE DEVELOPERS</h1>
+      <div class="cards">
+        <github-card data-user="purry03" data-theme="dark"></github-card>
+        <github-card data-user="bit-shashank" data-theme="dark"></github-card>
+      </div>
+    </div>
+    <script src="/js/github.js" type="module"></script>
+    <script src="/js/nav.js"></script>
+  </body>
+</html>

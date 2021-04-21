@@ -1,0 +1,38 @@
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.main-container {
+  padding-bottom: 50px;
+  width: 100%;
+  text-align: center;
+}
+
+.main-container a {
+  border-bottom: 1px dashed #eee;
+}
+
+.main-heading {
+  margin: 25px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+p {
+  text-align: left;
+  text-indent: 1rem;
+  padding: 30px 50px;
+  line-height: 2;
+}
+
+.logo {
+  filter: blur(0.25px);
+}
+
+.cards {
+  height: 500px;
+}
+github-card {
+  height: 100% !important;
+}

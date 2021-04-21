@@ -20,9 +20,9 @@
   box-sizing: border-box;
 }
 
-*::selection{
+*::selection {
   background-color: #33ff00;
-  color : rgb(37, 37, 37);
+  color: rgb(37, 37, 37);
 }
 
 html,
@@ -47,7 +47,7 @@ hr::after {
   letter-spacing: 4px;
 }
 
-A {
+a {
   color: inherit;
   text-decoration: none;
 }
@@ -78,7 +78,7 @@ A {
 
 .nav-list li {
   display: inline;
-    margin: 0 15px;
+  margin: 0 15px;
   cursor: pointer;
 }
 
