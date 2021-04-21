@@ -1,17 +1,16 @@
 <div class="nav-container">
   <h3>&lt Konst /></h3>
   <ul class="nav-list">
-
-    <li><a href="/" class='home'>Home</a></li>
-    <li class='rules'><a href="/rules">Rules</a></li>
-    <li>About</li>
-    <li class='annoucements' ><a href="/announcement" >Annoucements</a></li>
-    <li class='leaderboard'><a href="/leaderboard">Leaderboard</a></li>
+    <li><a href="/" class="home">Home</a></li>
+    <li class="rules"><a href="/rules">Rules</a></li>
+    <li class="about"><a href="/about">About</a></li>
+    <li class="annoucements"><a href="/announcement">Annoucements</a></li>
+    <li class="leaderboard"><a href="/leaderboard">Leaderboard</a></li>
     <%if (typeof user =='undefined'){ %>
-    <li class='login'><a href="/user/login">Login</a></li>
+    <li class="login"><a href="/user/login">Login</a></li>
     <% } else{ %>
     <li><a href="/user/logout">Logout</a></li>
-    <li class='profile'><a href="/user/profile">[<%=user.name%>]</a></li>
+    <li class="profile"><a href="/user/profile">[<%=user.name%>]</a></li>
     <% } %>
   </ul>
 </div>

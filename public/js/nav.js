@@ -13,6 +13,9 @@ switch (currentPath) {
   case "/rules":
     makeActive(".rules");
     break;
+  case "/about":
+    makeActive(".about");
+    break;
   case "/announcement":
     makeActive(".annoucements");
     break;

@@ -1,32 +1,35 @@
-body{
-    overflow-y: auto;
+body {
+  overflow-y: auto;
 }
 
-.main-container{
-    padding:30px;
-    text-align: center;
+.main-container {
+  padding: 30px 150px;
+  text-align: left;
+  line-height: 1.5;
 }
 
-.main-container h1{
-    font-size :3rem;
-    text-align: center;
-    color : #33ff00;
+.main-container h1 {
+  font-size: 3rem;
+  text-align: center;
+  color: #33ff00;
 }
 
-ol li{
-    font-family: 'Source Sans Pro', sans-serif;
-    margin: 50px 50px;
+ol li {
+  font-family: "Source Sans Pro", sans-serif;
+  margin: 50px 50px;
 }
 
-ol{
-    list-style: none;
-    counter-reset: rule;
-
+ol {
+  margin-top: 50px;
+  padding: 10px 0;
+  background: rgba(0, 0, 0, 0.5);
+  list-style: none;
+  counter-reset: rule;
 }
 
-ol li::before{
-    counter-increment: rule;
-    content :  counter(rule)" >        ";
-    color : #33ff00;
-    white-space: pre-wrap;
+ol li::before {
+  counter-increment: rule;
+  content: "< " counter(rule) " >  ";
+  color: #33ff00;
+  white-space: pre-wrap;
 }
