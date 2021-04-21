@@ -52,17 +52,12 @@ input {
   color: #333;
 }
 
-.messages h6::before,
-.messages h6::after {
-  content: " ------- ";
-  font-weight: 900;
-}
-
 .register-link {
   display: inline-block;
   font-size: 0.85rem;
   margin: 10px 0;
-  border-bottom: 1px dashed rgb(250, 243, 243);}
+  border-bottom: 1px dashed rgb(250, 243, 243);
+}
 
 button {
   display: block;

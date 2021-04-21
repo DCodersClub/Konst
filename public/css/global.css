@@ -174,3 +174,13 @@ svg {
   margin-top: 25px;
   font-size: 1.5rem;
 }
+
+.messages h6::before {
+  content: "< ";
+  font-weight: 900;
+}
+
+.messages h6::after {
+  content: " />";
+  font-weight: 900;
+}
