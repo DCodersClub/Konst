@@ -5,8 +5,8 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const { mongo } = require("mongoose");
 const { ensureAuthenticated } = require("../config/auth");
-const start = new Date("April 18, 2021 20:00:00 GMT+0530");
-const end = new Date("May 19, 2021 00:00:00 GMT+0530");
+const start = new Date("April 30, 2021 12:00:00 GMT+0530");
+const end = new Date("April 30, 2021 18:00:00 GMT+0530");
 
 router.get("/", ensureAuthenticated, async (req, res) => {
   if (getCurrentDiffMillis(start) <= 0) {
