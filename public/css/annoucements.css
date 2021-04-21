@@ -12,7 +12,7 @@ body{
 
 .annoucement{
     margin:10px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.7);
     padding:30px;
     border-radius: 10px;
 }
@@ -36,3 +36,11 @@ body{
     color: #ccc;
 
 }
+
+.container h1 {
+    font-size: 3rem;
+    text-align: center;
+    color: #33ff00;
+    margin-bottom: 50px;
+  }
+  

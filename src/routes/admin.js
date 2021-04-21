@@ -86,7 +86,6 @@ router.post("/announce",async (req,res)=>{
   else{
   try{
     const {subject,message}=req.body;
-
     const newAnnouce=Annoucement({
       subject:subject,
       content:message,
