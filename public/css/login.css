@@ -1,71 +1,73 @@
-.form-container{
-    height: 100%;
-    width: 66%;
-    margin: 0 auto;
-    text-align: center;
-    padding-top: 100px;
-
+.form-container {
+  height: 100%;
+  width: 66%;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 100px;
 }
 
-
-.form-container .main-heading{
-    text-transform: uppercase;
-    margin-bottom: 50px;
-}
-.messages{
-    margin-bottom: 25px;
+.form-container {
+  text-transform: uppercase;
+  margin-bottom: 50px;
 }
 
-.messages h6{
-    padding: 5px 0;
-    margin: 10px 0;
+.main-heading {
+  margin-bottom: 50px;
+}
+.messages {
+  margin-bottom: 25px;
 }
 
-.error-message{
-    background-color: crimson;
-    color : #eee;
-
+.messages h6 {
+  padding: 5px 0;
+  margin: 10px 0;
 }
 
-.success-message{
-    background-color:springgreen;
-    color : #333;
+.error-message {
+  background-color: crimson;
+  color: #eee;
 }
 
-.messages h6::before,.messages h6::after{
-    content: " ----------------------- ";
-    font-weight: 900;
+.success-message {
+  background-color: springgreen;
+  color: #333;
 }
 
-.input-container{
-    width: 50%;
-    margin: 0 auto;
+.messages h6::before,
+.messages h6::after {
+  content: " ----------------------- ";
+  font-weight: 900;
 }
-input{
-    display: block;
-    width: 100%;
-    margin-bottom: 25px;
-    padding: 5px;
+
+.input-container {
+  width: 50%;
+  margin: 0 auto;
+}
+input {
+  display: block;
+  width: 100%;
+  margin-bottom: 25px;
+  padding: 5px;
   outline: none;
   font-family: "Share Tech Mono", monospace;
 }
 
-.register-link{
-    display: inline-block;
-    font-size: 0.85rem;
-    margin: 10px 0;
-    border-bottom: 1px dashed rgb(250, 243, 243);
+.register-link {
+  display: inline-block;
+  font-size: 0.85rem;
+  margin: 10px 0;
+  border-bottom: 1px dashed rgb(250, 243, 243);
 }
 
-button{
-    height: 50px;
-    padding: 5px 15px;
-    margin-top: 25px;
-    background-color: #33ff00;
-    font-family: "Share Tech Mono", monospace;
-    color: #333;
-    font-weight: 700;
-    border: none;
-    outline: none;
-    cursor: pointer;
+button {
+  height: 50px;
+  padding: 5px 15px;
+  margin-top: 25px;
+  background-color: #33ff00;
+  font-family: "Share Tech Mono", monospace;
+  color: #333;
+  font-weight: 700;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
