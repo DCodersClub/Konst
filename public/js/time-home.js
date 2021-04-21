@@ -1,7 +1,6 @@
 const start = new Date("April 30, 2021 12:00:00 GMT+0530");
 const end = new Date("April 30, 2021 18:00:00 GMT+0530");
 
-
 const updateInterval = 100;
 let diff = 0.0;
 
@@ -49,27 +48,20 @@ function updateTimer(time) {
   }
 }
 
-function millisToMinutesAndSeconds(millis) {
-  var hours = Math.abs(Math.floor(millis / 3600000));
-  var mins = Math.abs(Math.floor(Math.floor(millis % 3600000) / 60000));
-  var seconds = Math.abs(
-    (Math.floor(Math.floor(millis % 3600000) % 60000) / 1000).toFixed(0)
-  );
-
-  //ES6 interpolated literals/template literals
-  //If seconds is less than 10 put a zero in front.
-  return (
-    pad(hours, 2) +
-    " hours " +
-    pad(mins, 2) +
-    " minutes " +
-    pad(seconds, 2) +
-    " seconds"
-  );
+function millisToMinutesAndSeconds(s) {
+  var ms = s % 1000;
+  s = (s - ms) / 1000;
+  var secs = s % 60;
+  s = (s - secs) / 60;
+  var mins = s % 60;
+  var hrs = (s - mins) / 60;
+  hrs = Math.abs(hrs);
+  mins = Math.abs(mins);
+  secs = Math.abs(secs);
+  return pad(hrs) + " hours " + pad(mins) + " mins " + pad(secs) + " seconds";
 }
 
-function pad(n, width, z) {
-  z = z || "0";
-  n = n + "";
-  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+function pad(num) {
+  padding = num < 10 ? "0" + num : num;
+  return "" + padding;
 }

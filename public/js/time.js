@@ -6,9 +6,9 @@ let diff = 0.0;
 
 diff = getCurrentDiff(start);
 updateTimer(diff);
-setInterval(function () {
+var update = setInterval(function () {
   if (getCurrentDiffMillis(end) >= 0) {
-    updateInterval = 99999;
+    clearInterval(updateTimer);
     alert("Contest has ended");
     window.location.href = "/leaderboard";
   } else {
@@ -27,15 +27,17 @@ function updateTimer(age) {
   $(".timer").html(age);
 }
 
-function millisToMinutesAndSeconds(millis) {
-  var hours = Math.floor(millis / 3600000);
-  var mins = Math.floor(Math.floor(millis % 3600000) / 60000);
-  var seconds = (
-    Math.floor(Math.floor(millis % 3600000) % 60000) / 1000
-  ).toFixed(0);
-  //ES6 interpolated literals/template literals
-  //If seconds is less than 10 put a zero in front.
-  return pad(hours, 2) + ":" + pad(mins, 2) + ":" + pad(seconds, 2);
+function millisToMinutesAndSeconds(s) {
+  var ms = s % 1000;
+  s = (s - ms) / 1000;
+  var secs = s % 60;
+  s = (s - secs) / 60;
+  var mins = s % 60;
+  var hrs = (s - mins) / 60;
+  hrs = Math.abs(hrs);
+  mins = Math.abs(mins);
+  secs = Math.abs(secs);
+  return pad(hrs, 2) + ":" + pad(mins, 2) + ":" + pad(secs, 2);
 }
 
 function pad(n, width, z) {

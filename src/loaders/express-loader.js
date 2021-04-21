@@ -4,6 +4,8 @@ const ejs = require("ejs");
 const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
+const favicon = require("serve-favicon");
+
 require("../config/passport")(passport);
 
 module.exports = async (app) => {
@@ -15,6 +17,7 @@ module.exports = async (app) => {
       extended: true,
     })
   );
+  app.use(favicon(__dirname + "/../../public/img/favicon.ico"));
 
   //setting express session
   app.use(
