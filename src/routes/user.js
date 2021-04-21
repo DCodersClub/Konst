@@ -319,7 +319,11 @@ router.post("/forgot", async (req, res) => {
 });
 
 router.get("/forgot", (req, res) => {
-  res.render("user/forgot_password.ejs");
+  if (req.isAuthenticated()) {
+    res.render("user/forgot_password.ejs", { user: req.user });
+  } else {
+    res.render("user/forgot_password.ejs");
+  }
 });
 
 module.exports = router;

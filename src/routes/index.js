@@ -12,11 +12,19 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/rules", function (req, res) {
-  res.render("rules.ejs");
+  if (req.isAuthenticated()) {
+    res.render("rules.ejs", { user: req.user });
+  } else {
+    res.render("rules.ejs");
+  }
 });
 
 router.get("/about", function (req, res) {
-  res.render("about.ejs");
+  if (req.isAuthenticated()) {
+    res.render("about.ejs", { user: req.user });
+  } else {
+    res.render("about.ejs");
+  }
 });
 
 router.get("/announcement", async (req, res) => {
