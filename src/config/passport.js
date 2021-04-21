@@ -14,7 +14,11 @@ module.exports = async (passport) => {
               message: "Email Not registered",
             });
           }
-          console.log(typeof user);
+          if(!user.isVerified){
+            return done(null, false, {
+              message: "Account Not Verified",
+            });
+          }
           bcrypt.compare(password, user.password, (err, isMatch) => {
             if (err) throw err;
             if (isMatch) {

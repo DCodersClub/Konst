@@ -4,6 +4,7 @@ const User = require("../models/user");
 
 let board = [];
 updateLeaderboard();
+setInterval(updateLeaderboard, 10000);
 
 router.get("/", function (req, res) {
     if(req.user){
@@ -16,12 +17,9 @@ router.get("/", function (req, res) {
       res.render("leaderboard.ejs", { user: req.user, board , rank:rank});
     }
     else{
-      res.render("leaderboard.ejs", {    board });
+      res.render("leaderboard.ejs", { board });
     }
-
 });
-
-setInterval(updateLeaderboard, 10000);
 
 function updateLeaderboard() {
   User.find({})
