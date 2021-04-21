@@ -1,30 +1,36 @@
 <html>
-	<head>
-		<title>Konst - Annoucements</title>
-		<link rel="stylesheet" href="/css/global.css" />
-		<link rel="stylesheet" href="/css/index.css" />
-		<link rel="stylesheet" href="/css/annoucements.css" />
-		
-		<link rel="preconnect" href="https://fonts.gstatic.com" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
-			rel="stylesheet"
-		/>
-		<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-	</head>
-	<body>
-		<%-include("partials/background.ejs")%>
-		<%-include("partials/navbar.ejs")%>
+  <head>
+    <title>Konst - Annoucements</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/annoucements.css" />
 
-		<div class="container">
-			<h1>ANNOUNCEMENTS</h1>
-			<% annoucements.forEach((annouce)=>{%>
-				<div class="annoucement">
-					<div class="heading"><%= new Date(annouce.createdOn).toLocaleDateString()+ ":" + annouce.subject %> </div> 
-					<div class="content"><%= annouce.content%></div>
-				</div>
-			<%});%>
-		</div>
-		<script src="/js/nav.js"></script>
-	</body>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+      integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <%-include("partials/background.ejs")%> <%-include("partials/navbar.ejs")%>
+
+    <div class="container">
+      <h1>Announcements</h1>
+      <% annoucements.forEach((annouce)=>{%>
+      <div class="annoucement">
+        <div class="heading">
+          <%= new Date(annouce.createdOn).toLocaleDateString()+ ":" +
+          annouce.subject %>
+        </div>
+        <div class="content"><%= annouce.content%></div>
+      </div>
+      <%});%>
+    </div>
+    <script src="/js/nav.js"></script>
+  </body>
 </html>
