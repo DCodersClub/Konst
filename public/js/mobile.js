@@ -14,6 +14,15 @@ window.mobileAndTabletCheck = function () {
   return check;
 };
 
-if (mobileAndTabletCheck()) {
+function isMobile() {
+  try {
+    document.createEvent("TouchEvent");
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+if (mobileAndTabletCheck() || isMobile()) {
   window.location.href = "/mobile";
 }
