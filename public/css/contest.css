@@ -60,7 +60,7 @@
 }
 
 .link-active {
-  color: #aaa;
+  color: #eee;
   border-bottom: 1px dashed #aaa;
   cursor: pointer;
 }
