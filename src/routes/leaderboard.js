@@ -22,7 +22,7 @@ router.get("/", function (req, res) {
 });
 
 function updateLeaderboard() {
-  User.find({})
+  User.find({isVerified:true})
     .sort({ score: -1, time: 1 })
     .then((users) => {
       board = users;

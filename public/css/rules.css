@@ -22,7 +22,7 @@ ol li {
 ol {
   margin-top: 50px;
   padding: 10px 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   list-style: none;
   counter-reset: rule;
 }

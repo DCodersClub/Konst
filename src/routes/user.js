@@ -231,6 +231,15 @@ router.get("/confirmation/:email/:token", async (req, res) => {
 			} else {
 				user.isVerified = true;
 				await user.save();
+				let message="Greetings,"+user.name+"\n"
+							+"Your account has been created successfully, and you are all set to participate in KONST-April 2021 \n"
+							+"Don't forget to join our WhatsApp group for live updates regarding the contest."
+							+"  https://chat.whatsapp.com/GSNgA50uW3A1SE1CQpBwif   \n"
+							+" Meanwhile, don't forget to check out rules( http://34.66.129.119/rules ) and  about( http://34.66.129.119/about ) section to know more about the event.\n"
+							+ "Reach out to us at dcoders.srmcem@gmail.com for any kind of queries.\n"
+							+ "Regards\n" 
+							+"Team Dcoders"
+				mailer.sendMail(email, "Konst", message);
 				req.flash("success_msg", "Account Verified. Login!");
 				res.redirect("/user/login");
 			}

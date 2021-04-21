@@ -15,7 +15,9 @@
 	<body>
 		<%-include("partials/background.ejs")%>
 		<%-include("partials/navbar.ejs")%>
+
 		<div class="container">
+			<h1>ANNOUNCEMENTS</h1>
 			<% annoucements.forEach((annouce)=>{%>
 				<div class="annoucement">
 					<div class="heading"><%= new Date(annouce.createdOn).toLocaleDateString()+ ":" + annouce.subject %> </div> 
