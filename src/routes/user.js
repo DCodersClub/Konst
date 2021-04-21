@@ -99,7 +99,7 @@ router.post("/register", async (req, res) => {
         "\n\nThank You!\n";
       req.flash(
         "success_msg",
-        "Registered Successfully, Check Your Mail To Verify Your Account. Didn't Receieved the mail? Click on resend."
+        "Registered Successfully, Check Your Mail To Verify Your Account. Didn't get the mail? Check your spam folder or click on resend."
       );
       mailer.sendMail(email, "Welcome to Konst", message);
       res.redirect("/user/confirm");
@@ -221,7 +221,7 @@ router.get("/confirmation/:email/:token", async (req, res) => {
       if (!user) {
         return res.render("user/confirm", {
           error:
-            "We were unable to find a user for this verification. Please SignUp!",
+            "We were unable to find a user for this verification code. Please sign up!",
         });
       } else if (user.isVerified) {
         return res.render("user/confirm", {
