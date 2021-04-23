@@ -96,7 +96,7 @@ router.post("/announce",async (req,res)=>{
     for(user of users){
       mailList.push(user.email);
     }
-    mailer.sendMail(mailList, subject,message);
+    mailer.sendMultiple(mailList, subject,message);
     res.redirect("/admin")
   }catch(err){
     console.log(err);
